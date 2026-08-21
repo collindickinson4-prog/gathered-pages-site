@@ -11,3 +11,9 @@ source/
 node_modules/
 .DS_Store
 Thumbs.db
+
+.vercel
+
+# Secrets - Kit API key lives here locally
+.env
+.env.local

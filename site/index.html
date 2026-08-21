@@ -46,6 +46,7 @@
 <div class="utility-strip">
   <div class="wrap utility-strip__inner">
     <nav class="utility-nav" aria-label="Secondary">
+        <a href="newsletter.html">Newsletter</a>
         <a href="board.html">Meet The Board</a>
         <a href="founder.html">Meet Our Founder</a>
         <a href="makers.html">Women Partners</a>
@@ -66,6 +67,7 @@
         <a href="the-box.html">What&#8217;s In The Box</a>
         <a href="reading-list.html">Reading List</a>
         <a href="partner.html">Partner With Us</a>
+        <a href="newsletter.html" class="nav-mobile-only">Newsletter</a>
         <a href="board.html" class="nav-mobile-only">Meet The Board</a>
         <a href="founder.html" class="nav-mobile-only">Meet Our Founder</a>
         <a href="makers.html" class="nav-mobile-only">Women Partners</a>
@@ -301,6 +303,38 @@
     </div>
   </div>
 </section>
+
+<section class="section section--warm">
+  <div class="wrap wrap--mid">
+    <div class="split split--wide-text" data-rise>
+      <div>
+        <div class="section-intro">
+          <h2>Get the letter</h2>
+          <p>We write when there is something real to say &#8212; where the cartons went, what the groups read, and who we bought from.</p>
+        </div>
+        <p class="mt-4 text-soft measure">No more than one a month, usually less. We never sell or share the list, and every letter has an unsubscribe link that works. <a href="newsletter.html">More about the letter</a>.</p>
+      </div>
+      <form class="form" data-newsletter>
+        <div class="field">
+          <label for="h-name">First name <span class="text-soft">(optional)</span></label>
+          <input id="h-name" name="first_name" type="text" autocomplete="given-name">
+        </div>
+        <div class="field">
+          <label for="h-email">Email</label>
+          <input id="h-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field" hidden aria-hidden="true">
+          <label for="h-company">Company</label>
+          <input id="h-company" name="company" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="btn-row">
+          <button class="btn btn--navy" type="submit">Sign me up</button>
+        </div>
+        <p class="form__status text-soft" data-newsletter-status role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer class="footer">
@@ -337,6 +371,7 @@
         <ul>
           <li><a href="donate.html">Donate</a></li>
           <li><a href="partner.html">Partner with us</a></li>
+          <li><a href="newsletter.html">Get the newsletter</a></li>
           <li><a href="contact.html#introduce">Introduce us to a group</a></li>
           <li><a href="https://www.instagram.com/gatheredpagescollective/" rel="noopener">Instagram</a></li>
         </ul>

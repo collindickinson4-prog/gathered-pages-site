@@ -1498,3 +1498,13 @@ body.is-nav-open { overflow: hidden; }
 .fine { font-size: var(--fs-fine); }
 .measure { max-width: var(--measure); }
 .measure-tight { max-width: var(--measure-tight); }
+
+/* Newsletter signup feedback — one line under the button, coloured only once
+   there is something to say. */
+/* The bot-trap field carries [hidden]; .field's own display would win. */
+.field[hidden] { display: none; }
+
+.form__status:empty { display: none; }
+.form__status { margin: 0; font-size: 0.95rem; }
+.form__status.is-done { color: var(--sage-deep); }
+.form__status.is-error { color: var(--orange-ink); }
