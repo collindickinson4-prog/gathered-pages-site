@@ -1,0 +1,752 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-14T19:35:28Z",
+  "title": "Design System: Gathered Pages Collective",
+  "extensions": {
+    "colorMeta": {
+      "navy": {
+        "role": "primary",
+        "displayName": "Catalog Navy",
+        "tonalRamp": [
+          "oklch(15% 0.071 262.0)",
+          "oklch(26% 0.071 262.0)",
+          "oklch(38% 0.071 262.0)",
+          "oklch(49% 0.071 262.0)",
+          "oklch(61% 0.071 262.0)",
+          "oklch(72% 0.071 262.0)",
+          "oklch(84% 0.071 262.0)",
+          "oklch(95% 0.071 262.0)"
+        ]
+      },
+      "navy-deep": {
+        "role": "primary",
+        "displayName": "Plate Navy",
+        "tonalRamp": [
+          "oklch(15% 0.093 262.2)",
+          "oklch(26% 0.093 262.2)",
+          "oklch(38% 0.093 262.2)",
+          "oklch(49% 0.093 262.2)",
+          "oklch(61% 0.093 262.2)",
+          "oklch(72% 0.093 262.2)",
+          "oklch(84% 0.093 262.2)",
+          "oklch(95% 0.093 262.2)"
+        ]
+      },
+      "navy-ink": {
+        "role": "primary",
+        "displayName": "Press Black-Navy",
+        "tonalRamp": [
+          "oklch(15% 0.054 259.0)",
+          "oklch(26% 0.054 259.0)",
+          "oklch(38% 0.054 259.0)",
+          "oklch(49% 0.054 259.0)",
+          "oklch(61% 0.054 259.0)",
+          "oklch(72% 0.054 259.0)",
+          "oklch(84% 0.054 259.0)",
+          "oklch(95% 0.054 259.0)"
+        ]
+      },
+      "orange": {
+        "role": "primary",
+        "displayName": "Poppy Orange",
+        "tonalRamp": [
+          "oklch(15% 0.176 39.8)",
+          "oklch(26% 0.176 39.8)",
+          "oklch(38% 0.176 39.8)",
+          "oklch(49% 0.176 39.8)",
+          "oklch(61% 0.176 39.8)",
+          "oklch(72% 0.176 39.8)",
+          "oklch(84% 0.176 39.8)",
+          "oklch(95% 0.176 39.8)"
+        ]
+      },
+      "orange-action": {
+        "role": "secondary",
+        "displayName": "Action Orange",
+        "tonalRamp": [
+          "oklch(15% 0.159 40.0)",
+          "oklch(26% 0.159 40.0)",
+          "oklch(38% 0.159 40.0)",
+          "oklch(49% 0.159 40.0)",
+          "oklch(61% 0.159 40.0)",
+          "oklch(72% 0.159 40.0)",
+          "oklch(84% 0.159 40.0)",
+          "oklch(95% 0.159 40.0)"
+        ]
+      },
+      "orange-action-hover": {
+        "role": "secondary",
+        "displayName": "Action Orange Deep",
+        "tonalRamp": [
+          "oklch(15% 0.141 40.0)",
+          "oklch(26% 0.141 40.0)",
+          "oklch(38% 0.141 40.0)",
+          "oklch(49% 0.141 40.0)",
+          "oklch(61% 0.141 40.0)",
+          "oklch(72% 0.141 40.0)",
+          "oklch(84% 0.141 40.0)",
+          "oklch(95% 0.141 40.0)"
+        ]
+      },
+      "orange-ink": {
+        "role": "secondary",
+        "displayName": "Ink Orange",
+        "tonalRamp": [
+          "oklch(15% 0.151 39.8)",
+          "oklch(26% 0.151 39.8)",
+          "oklch(38% 0.151 39.8)",
+          "oklch(49% 0.151 39.8)",
+          "oklch(61% 0.151 39.8)",
+          "oklch(72% 0.151 39.8)",
+          "oklch(84% 0.151 39.8)",
+          "oklch(95% 0.151 39.8)"
+        ]
+      },
+      "orange-soft": {
+        "role": "secondary",
+        "displayName": "Bloom Orange",
+        "tonalRamp": [
+          "oklch(15% 0.106 45.2)",
+          "oklch(26% 0.106 45.2)",
+          "oklch(38% 0.106 45.2)",
+          "oklch(49% 0.106 45.2)",
+          "oklch(61% 0.106 45.2)",
+          "oklch(72% 0.106 45.2)",
+          "oklch(84% 0.106 45.2)",
+          "oklch(95% 0.106 45.2)"
+        ]
+      },
+      "sage": {
+        "role": "tertiary",
+        "displayName": "Field Sage",
+        "tonalRamp": [
+          "oklch(15% 0.061 126.0)",
+          "oklch(26% 0.061 126.0)",
+          "oklch(38% 0.061 126.0)",
+          "oklch(49% 0.061 126.0)",
+          "oklch(61% 0.061 126.0)",
+          "oklch(72% 0.061 126.0)",
+          "oklch(84% 0.061 126.0)",
+          "oklch(95% 0.061 126.0)"
+        ]
+      },
+      "sage-deep": {
+        "role": "tertiary",
+        "displayName": "Deep Sage",
+        "tonalRamp": [
+          "oklch(15% 0.058 127.3)",
+          "oklch(26% 0.058 127.3)",
+          "oklch(38% 0.058 127.3)",
+          "oklch(49% 0.058 127.3)",
+          "oklch(61% 0.058 127.3)",
+          "oklch(72% 0.058 127.3)",
+          "oklch(84% 0.058 127.3)",
+          "oklch(95% 0.058 127.3)"
+        ]
+      },
+      "sage-lift": {
+        "role": "tertiary",
+        "displayName": "Lift Sage",
+        "tonalRamp": [
+          "oklch(15% 0.059 124.7)",
+          "oklch(26% 0.059 124.7)",
+          "oklch(38% 0.059 124.7)",
+          "oklch(49% 0.059 124.7)",
+          "oklch(61% 0.059 124.7)",
+          "oklch(72% 0.059 124.7)",
+          "oklch(84% 0.059 124.7)",
+          "oklch(95% 0.059 124.7)"
+        ]
+      },
+      "cream": {
+        "role": "neutral",
+        "displayName": "Warm Cream",
+        "tonalRamp": [
+          "oklch(15% 0.013 86.8)",
+          "oklch(26% 0.013 86.8)",
+          "oklch(38% 0.013 86.8)",
+          "oklch(49% 0.013 86.8)",
+          "oklch(61% 0.013 86.8)",
+          "oklch(72% 0.013 86.8)",
+          "oklch(84% 0.013 86.8)",
+          "oklch(95% 0.013 86.8)"
+        ]
+      },
+      "cream-warm": {
+        "role": "neutral",
+        "displayName": "Aged Cream",
+        "tonalRamp": [
+          "oklch(15% 0.021 85.9)",
+          "oklch(26% 0.021 85.9)",
+          "oklch(38% 0.021 85.9)",
+          "oklch(49% 0.021 85.9)",
+          "oklch(61% 0.021 85.9)",
+          "oklch(72% 0.021 85.9)",
+          "oklch(84% 0.021 85.9)",
+          "oklch(95% 0.021 85.9)"
+        ]
+      },
+      "kraft": {
+        "role": "neutral",
+        "displayName": "Kraft",
+        "tonalRamp": [
+          "oklch(15% 0.085 80.9)",
+          "oklch(26% 0.085 80.9)",
+          "oklch(38% 0.085 80.9)",
+          "oklch(49% 0.085 80.9)",
+          "oklch(61% 0.085 80.9)",
+          "oklch(72% 0.085 80.9)",
+          "oklch(84% 0.085 80.9)",
+          "oklch(95% 0.085 80.9)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15% 0.014 261.7)",
+          "oklch(26% 0.014 261.7)",
+          "oklch(38% 0.014 261.7)",
+          "oklch(49% 0.014 261.7)",
+          "oklch(61% 0.014 261.7)",
+          "oklch(72% 0.014 261.7)",
+          "oklch(84% 0.014 261.7)",
+          "oklch(95% 0.014 261.7)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Soft Ink",
+        "tonalRamp": [
+          "oklch(15% 0.034 260.2)",
+          "oklch(26% 0.034 260.2)",
+          "oklch(38% 0.034 260.2)",
+          "oklch(49% 0.034 260.2)",
+          "oklch(61% 0.034 260.2)",
+          "oklch(72% 0.034 260.2)",
+          "oklch(84% 0.034 260.2)",
+          "oklch(95% 0.034 260.2)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Press White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0 89.9)",
+          "oklch(26% 0 89.9)",
+          "oklch(38% 0 89.9)",
+          "oklch(49% 0 89.9)",
+          "oklch(61% 0 89.9)",
+          "oklch(72% 0 89.9)",
+          "oklch(84% 0 89.9)",
+          "oklch(95% 0 89.9)"
+        ]
+      },
+      "fg-soft-navy": {
+        "role": "neutral",
+        "displayName": "Plate Grey",
+        "canonical": "#c2c8d4",
+        "tonalRamp": [
+          "oklch(15% 0.018 264.5)",
+          "oklch(26% 0.018 264.5)",
+          "oklch(38% 0.018 264.5)",
+          "oklch(49% 0.018 264.5)",
+          "oklch(61% 0.018 264.5)",
+          "oklch(72% 0.018 264.5)",
+          "oklch(84% 0.018 264.5)",
+          "oklch(95% 0.018 264.5)"
+        ]
+      },
+      "fg-soft-ink": {
+        "role": "neutral",
+        "displayName": "Press Grey",
+        "canonical": "#b9c0cd",
+        "tonalRamp": [
+          "oklch(15% 0.02 263.0)",
+          "oklch(26% 0.02 263.0)",
+          "oklch(38% 0.02 263.0)",
+          "oklch(49% 0.02 263.0)",
+          "oklch(61% 0.02 263.0)",
+          "oklch(72% 0.02 263.0)",
+          "oklch(84% 0.02 263.0)",
+          "oklch(95% 0.02 263.0)"
+        ]
+      },
+      "fg-soft-banner": {
+        "role": "neutral",
+        "displayName": "Endpaper Grey",
+        "canonical": "#c8cedb",
+        "tonalRamp": [
+          "oklch(15% 0.019 266.0)",
+          "oklch(26% 0.019 266.0)",
+          "oklch(38% 0.019 266.0)",
+          "oklch(49% 0.019 266.0)",
+          "oklch(61% 0.019 266.0)",
+          "oklch(72% 0.019 266.0)",
+          "oklch(84% 0.019 266.0)",
+          "oklch(95% 0.019 266.0)"
+        ]
+      },
+      "fg-soft-sage": {
+        "role": "neutral",
+        "displayName": "Sage Chalk",
+        "canonical": "#eff3e8",
+        "tonalRamp": [
+          "oklch(15% 0.015 123.0)",
+          "oklch(26% 0.015 123.0)",
+          "oklch(38% 0.015 123.0)",
+          "oklch(49% 0.015 123.0)",
+          "oklch(61% 0.015 123.0)",
+          "oklch(72% 0.015 123.0)",
+          "oklch(84% 0.015 123.0)",
+          "oklch(95% 0.015 123.0)"
+        ]
+      },
+      "hero-lead": {
+        "role": "neutral",
+        "displayName": "Hero Standfirst",
+        "canonical": "#dfe3ea",
+        "tonalRamp": [
+          "oklch(15% 0.01 261.8)",
+          "oklch(26% 0.01 261.8)",
+          "oklch(38% 0.01 261.8)",
+          "oklch(49% 0.01 261.8)",
+          "oklch(61% 0.01 261.8)",
+          "oklch(72% 0.01 261.8)",
+          "oklch(84% 0.01 261.8)",
+          "oklch(95% 0.01 261.8)"
+        ]
+      },
+      "banner-lead": {
+        "role": "neutral",
+        "displayName": "Banner Standfirst",
+        "canonical": "#d7dce6",
+        "tonalRamp": [
+          "oklch(15% 0.015 264.5)",
+          "oklch(26% 0.015 264.5)",
+          "oklch(38% 0.015 264.5)",
+          "oklch(49% 0.015 264.5)",
+          "oklch(61% 0.015 264.5)",
+          "oklch(72% 0.015 264.5)",
+          "oklch(84% 0.015 264.5)",
+          "oklch(95% 0.015 264.5)"
+        ]
+      },
+      "footer-fine": {
+        "role": "neutral",
+        "displayName": "Colophon Grey",
+        "canonical": "#9aa4b6",
+        "tonalRamp": [
+          "oklch(15% 0.029 262.3)",
+          "oklch(26% 0.029 262.3)",
+          "oklch(38% 0.029 262.3)",
+          "oklch(49% 0.029 262.3)",
+          "oklch(61% 0.029 262.3)",
+          "oklch(72% 0.029 262.3)",
+          "oklch(84% 0.029 262.3)",
+          "oklch(95% 0.029 262.3)"
+        ]
+      },
+      "placeholder": {
+        "role": "neutral",
+        "displayName": "Field Placeholder",
+        "canonical": "#59637a",
+        "tonalRamp": [
+          "oklch(15% 0.039 266.6)",
+          "oklch(26% 0.039 266.6)",
+          "oklch(38% 0.039 266.6)",
+          "oklch(49% 0.039 266.6)",
+          "oklch(61% 0.039 266.6)",
+          "oklch(72% 0.039 266.6)",
+          "oklch(84% 0.039 266.6)",
+          "oklch(95% 0.039 266.6)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The home hero headline only, set with a manual line break; the emphasized phrase goes italic in Bloom Orange."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Page-level h1, one per page. Drops to weight 500 at -0.025em on the interior page banner."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Section headings (h2) within a page."
+      },
+      "subhead": {
+        "displayName": "Subhead",
+        "purpose": "h3 — step titles, door titles, maker headings."
+      },
+      "subhead-small": {
+        "displayName": "Subhead Small",
+        "purpose": "h4, and the seed-packet titles, where a full subhead would crowd a three-column cell."
+      },
+      "statement": {
+        "displayName": "Statement",
+        "purpose": "The mission set as a printed page: one sentence at up to 33rem holding the left half of a two-column band. Present on nine of eleven pages."
+      },
+      "quote": {
+        "displayName": "Quote",
+        "purpose": "The pulled book line, set italic above a hairline-ruled attribution."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Serif standfirst inside prose, capped at the 58ch tight measure."
+      },
+      "banner-lead": {
+        "displayName": "Banner Lead",
+        "purpose": "The smaller standfirst beneath a hero or interior-banner headline, quieter because it competes with display type above and a photograph behind."
+      },
+      "footer-tagline": {
+        "displayName": "Footer Tagline",
+        "purpose": "One use only: the footer’s three-clause brand line, sized so the endpaper reads as a colophon rather than a heading."
+      },
+      "entry-title": {
+        "displayName": "Entry Title",
+        "purpose": "A book title in a dot-leader catalog row."
+      },
+      "qa-question": {
+        "displayName": "QA Question",
+        "purpose": "The sentence-case serif term in a question-and-answer ledger, where an uppercase tracked term would be unreadable at question length."
+      },
+      "maker-name": {
+        "displayName": "Maker Name",
+        "purpose": "The business name in a ruled maker row, one step above Subhead Small so the name leads the row."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Sowing-step numbers, generated by a CSS counter as decimal-leading-zero lining figures. Never typed into markup."
+      },
+      "numeral-compact": {
+        "displayName": "Numeral Compact",
+        "purpose": "The same numeral below 620px, once it leaves its side gutter and moves onto a line above its own body."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All running text at 17px, above the 16px accessibility floor. Capped at 68ch."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Secondary running text — door bodies, packet bodies, quote attributions, notices, the doors’ ruled note, and the footer’s link columns."
+      },
+      "fine": {
+        "displayName": "Fine",
+        "purpose": "The workhorse small size: weight 400 for text that reads as prose (plate captions, field hints, footer fine print), weight 700 uppercase for text that labels (breadcrumbs, form labels, ledger terms, footer column labels, the masthead donate button)."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "The catalog’s tracked uppercase column head, the widest tracking in the system. Opens a list or table; never a kicker above a heading."
+      },
+      "micro-label": {
+        "displayName": "Micro Label",
+        "purpose": "The smallest type on the site, only ever on a dark ground or as an orange accent: utility-strip links, the packet “sowing instructions” affordance, and the primary navigation below 1080px."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "All button faces. The masthead donate button steps down to Fine, and to Label at 0.08em below 900px."
+      }
+    },
+    "shadows": [
+      {
+        "name": "printed-block",
+        "value": "0 2px 0 0 rgba(12, 36, 84, 0.28), 0 10px 22px -14px rgba(12, 36, 84, 0.7)",
+        "purpose": "The only shadow in the system that reads as elevation. A hard navy offset plus a tight diffuse pool that makes the donate button read as a letterpress block sitting proud of the paper. Reserved for the donate action."
+      },
+      {
+        "name": "focus-ring",
+        "value": "inset 0 0 0 1px var(--orange, #e15d2a)",
+        "purpose": "A flat inset stroke on a focused input, doubling the border weight without shifting layout. It draws a rule, not a lift."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The single easing curve. Every transition and keyframe animation in the system uses it."
+      },
+      {
+        "name": "dur",
+        "value": "0.6s",
+        "purpose": "The system's long duration, used for the door image scale on hover."
+      },
+      {
+        "name": "dur-state",
+        "value": "0.22s",
+        "purpose": "Button color, border and transform transitions."
+      },
+      {
+        "name": "dur-underline",
+        "value": "0.28s",
+        "purpose": "The navigation underline scaling in from the left, and the nav toggle bars folding into a cross."
+      },
+      {
+        "name": "dur-disclose",
+        "value": "0.42s",
+        "purpose": "The seed packet back panel opening via grid-template-rows 0fr to 1fr."
+      },
+      {
+        "name": "dur-reveal",
+        "value": "0.85s",
+        "purpose": "The one authored scroll reveal: 18px rise plus fade, staggered 0.07s per sibling to a cap of five."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "@media (prefers-reduced-motion: reduce) { animation-duration: 0.001ms; transition-duration: 0.001ms; }",
+        "purpose": "Global. Collapses every animation and transition and forces revealed content visible. Nothing may animate outside this net."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs",
+        "value": "420px"
+      },
+      {
+        "name": "sm",
+        "value": "520px"
+      },
+      {
+        "name": "sm-plus",
+        "value": "560px"
+      },
+      {
+        "name": "md",
+        "value": "620px"
+      },
+      {
+        "name": "md-plus",
+        "value": "680px"
+      },
+      {
+        "name": "lg",
+        "value": "720px"
+      },
+      {
+        "name": "lg-plus",
+        "value": "760px"
+      },
+      {
+        "name": "xl",
+        "value": "860px"
+      },
+      {
+        "name": "structural",
+        "value": "900px"
+      },
+      {
+        "name": "xxl",
+        "value": "1080px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Donate Button",
+      "kind": "button",
+      "refersTo": "button-donate",
+      "description": "The single filled orange action, present in the masthead of every page at every scroll position and repeated in the hero and closing appeal. The only element in the system that carries a shadow.",
+      "html": "<a class=\"ds-btn-donate\" href=\"#\">Donate Now</a>",
+      "css": ".ds-btn-donate {display:inline-flex;align-items:center;justify-content:center;gap:0.6rem;font-family:Lato,Helvetica Neue,Helvetica,Arial,sans-serif;font-weight:700;font-size:0.9375rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;line-height:1;padding:1.0625rem 1.75rem;border:1px solid transparent;border-radius:0;cursor:pointer;transition:background-color 0.22s cubic-bezier(0.16,1,0.3,1),color 0.22s cubic-bezier(0.16,1,0.3,1),border-color 0.22s cubic-bezier(0.16,1,0.3,1),transform 0.22s cubic-bezier(0.16,1,0.3,1);background:var(--orange-action, #c65225);color:#fff;box-shadow:0 2px 0 0 rgba(12,36,84,0.28), 0 10px 22px -14px rgba(12,36,84,0.7);}.ds-btn-donate:hover { background:var(--orange-action-hover, #a8441d);color:#fff;transform:translateY(-1px); }.ds-btn-donate:active { transform:translateY(0); }.ds-btn-donate:focus-visible {outline:3px solid var(--orange, #e15d2a);outline-offset:3px;border-radius:2px;}"
+    },
+    {
+      "name": "Navy Button",
+      "kind": "button",
+      "refersTo": "button-navy",
+      "description": "The default forward action inside light sections, and the submit control on forms.",
+      "html": "<a class=\"ds-btn-navy\" href=\"#\">Open the box</a>",
+      "css": ".ds-btn-navy {display:inline-flex;align-items:center;justify-content:center;gap:0.6rem;font-family:Lato,Helvetica Neue,Helvetica,Arial,sans-serif;font-weight:700;font-size:0.9375rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;line-height:1;padding:1.0625rem 1.75rem;border:1px solid transparent;border-radius:0;cursor:pointer;transition:background-color 0.22s cubic-bezier(0.16,1,0.3,1),color 0.22s cubic-bezier(0.16,1,0.3,1),border-color 0.22s cubic-bezier(0.16,1,0.3,1),transform 0.22s cubic-bezier(0.16,1,0.3,1);background:var(--navy, #16294d);color:var(--cream, #f5f1e8);}.ds-btn-navy:hover { background:var(--navy-deep, #0c2454);transform:translateY(-1px); }.ds-btn-navy:active { transform:translateY(0); }.ds-btn-navy:focus-visible {outline:3px solid var(--orange, #e15d2a);outline-offset:3px;border-radius:2px;}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "The secondary action, used on ten of eleven pages and almost always beside a filled button. Takes the surface's own foreground color rather than a fixed one.",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\">Bring a club to your group</a>",
+      "css": ".ds-btn-outline {display:inline-flex;align-items:center;justify-content:center;gap:0.6rem;font-family:Lato,Helvetica Neue,Helvetica,Arial,sans-serif;font-weight:700;font-size:0.9375rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;line-height:1;padding:1.0625rem 1.75rem;border:1px solid transparent;border-radius:0;cursor:pointer;transition:background-color 0.22s cubic-bezier(0.16,1,0.3,1),color 0.22s cubic-bezier(0.16,1,0.3,1),border-color 0.22s cubic-bezier(0.16,1,0.3,1),transform 0.22s cubic-bezier(0.16,1,0.3,1);background:transparent;color:var(--ink, #23272e);border-color:rgba(22,41,77,0.55);}.ds-btn-outline:hover { border-color:currentColor;background:rgba(22,41,77,0.05);transform:translateY(-1px); }.ds-btn-outline:active { transform:translateY(0); }.ds-btn-outline:focus-visible {outline:3px solid var(--orange, #e15d2a);outline-offset:3px;border-radius:2px;}"
+    },
+    {
+      "name": "Cross-Reference Link",
+      "kind": "custom",
+      "refersTo": "xref-link",
+      "description": "The catalog's tertiary action: tracked uppercase Lato in Ink Orange, rule-underlined, with an arrow that steps forward on hover as the gap widens.",
+      "html": "<a class=\"ds-xref\" href=\"#\">Read our story <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M4 12h15m0 0-5.5-5.5M19 12l-5.5 5.5\"/></svg></a>",
+      "css": ".ds-xref { display:inline-flex;align-items:center;gap:0.5rem;font-family:Lato,Helvetica Neue,Helvetica,Arial,sans-serif;font-weight:700;font-size:0.9375rem;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;color:var(--orange-ink, #b04419);border-bottom:1px solid currentColor;padding-bottom:0.2rem;transition:gap 0.22s cubic-bezier(0.16,1,0.3,1),color 0.22s cubic-bezier(0.16,1,0.3,1); }.ds-xref svg { width:1em;height:1em;flex:none; }.ds-xref:hover { gap:0.85rem; }.ds-xref:focus-visible {outline:3px solid var(--orange, #e15d2a);outline-offset:3px;border-radius:2px;}"
+    },
+    {
+      "name": "Primary Navigation Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Masthead navigation on the navy ground: 0.75rem tracked caps with a 2px orange underline that scales in from the left and stays scaled for the current page.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Primary\"><a href=\"#\">About</a><a href=\"#\">How It Works</a><a href=\"#\" aria-current=\"page\">Reading List</a></nav>",
+      "css": ".ds-nav { display:flex;align-items:center;gap:1.9rem;background:var(--navy, #16294d);padding:0.75rem 1.5rem; }.ds-nav a { position:relative;text-decoration:none;color:var(--cream, #f5f1e8);font-family:Lato,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;white-space:nowrap;padding-block:0.6rem;transition:color 0.2s cubic-bezier(0.16,1,0.3,1); }.ds-nav a::after { content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--orange, #e15d2a);transform:scaleX(0);transform-origin:left;transition:transform 0.28s cubic-bezier(0.16,1,0.3,1); }.ds-nav a:hover::after, .ds-nav a[aria-current='page']::after { transform:scaleX(1); }.ds-nav a[aria-current='page'] { color:#fff; }.ds-nav a:focus-visible {outline:3px solid var(--orange, #e15d2a);outline-offset:3px;border-radius:2px;}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input-text",
+      "description": "Square white field with a tracked uppercase label above it. Focus doubles the stroke weight with an inset ring rather than shifting layout.",
+      "html": "<div class=\"ds-field\"><label for=\"ds-name\">Your name</label><input id=\"ds-name\" type=\"text\" placeholder=\"Jamie Dickinson\"></div>",
+      "css": ".ds-field { display:grid;gap:0.45rem;max-width:24rem;font-family:Lato,Helvetica Neue,Helvetica,Arial,sans-serif; }.ds-field label { font-size:0.8125rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--ink-soft, #3f4a5c); }.ds-field input { font-family:inherit;font-size:1.0625rem;line-height:1.68;color:var(--ink, #23272e);background:#fff;border:1px solid rgba(22,41,77,0.55);border-radius:0;padding:0.9rem 1rem;width:100%;transition:border-color 0.2s cubic-bezier(0.16,1,0.3,1),box-shadow 0.2s cubic-bezier(0.16,1,0.3,1); }.ds-field input::placeholder { color:#59637a;opacity:1; }.ds-field input:hover { border-color:var(--navy, #16294d); }.ds-field input:focus { border-color:var(--orange, #e15d2a);box-shadow:inset 0 0 0 1px var(--orange, #e15d2a);outline:none; }.ds-field input:focus-visible {outline:3px solid var(--orange, #e15d2a);outline-offset:3px;border-radius:2px;}"
+    },
+    {
+      "name": "Plate",
+      "kind": "card",
+      "refersTo": "plate",
+      "description": "The system's signature silhouette: an illustration held inside two rules with a gutter of ground between them, captioned outside both.",
+      "html": "<figure class=\"ds-plate\"><div class=\"ds-plate__img\" role=\"img\" aria-label=\"Placeholder for a framed catalog illustration.\"></div><figcaption class=\"ds-plate__caption\">The facilitator carton, opened. Ten kits, one welcome card, no assembly.</figcaption></figure>",
+      "css": ".ds-plate { position:relative;margin:0;padding:0.75rem;border:1px solid rgba(22,41,77,0.55);background:transparent;max-width:22rem; }.ds-plate__img { border:1px solid rgba(22,41,77,0.16);width:100%;aspect-ratio:4/3;background:repeating-linear-gradient(135deg, rgba(198,165,107,0.35) 0 8px, rgba(245,241,232,0.9) 8px 16px); }.ds-plate__caption { border:0;margin-top:0.75rem;font-family:Lato,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.8125rem;line-height:1.5;letter-spacing:0.02em;color:var(--ink-soft, #3f4a5c); }"
+    },
+    {
+      "name": "Ledger Rows",
+      "kind": "custom",
+      "description": "The workhorse content pattern, on eight of eleven pages: a tracked uppercase orange term against a muted definition, every row opened by a hairline and the set closed by one.",
+      "html": "<dl class=\"ds-ledger\"><div><dt>The book</dt><dd>Chosen for the group, by a woman author wherever possible, bought from a woman-owned independent bookshop.</dd></div><div><dt>Journal &amp; pen</dt><dd>From women artists and makers.</dd></div></dl>",
+      "css": ".ds-ledger { margin:0;font-family:Lato,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:1.0625rem;line-height:1.68; }.ds-ledger > div { display:grid;grid-template-columns:minmax(0,13rem) minmax(0,1fr);gap:0.75rem 2.5rem;padding-block:1rem;border-top:1px solid rgba(22,41,77,0.16); }.ds-ledger > div:last-child { border-bottom:1px solid rgba(22,41,77,0.16); }.ds-ledger dt { font-size:0.8125rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange-ink, #b04419);padding-top:0.28rem; }.ds-ledger dd { margin:0;color:var(--ink-soft, #3f4a5c);max-width:58ch; }@media (max-width:680px) { .ds-ledger > div { grid-template-columns:minmax(0,1fr); } }"
+    },
+    {
+      "name": "Catalog Entry",
+      "kind": "custom",
+      "description": "The dot-leader list. A Cormorant title, a dotted leader that flexes to fill the row and is nudged up to sit on the baseline, and a tracked uppercase note held right.",
+      "html": "<ul class=\"ds-catalog\"><li><span class=\"ds-catalog__title\">Theo of Golden</span><span class=\"ds-catalog__leader\"></span><span class=\"ds-catalog__note\">Allen Levi</span></li><li><span class=\"ds-catalog__title\">The Covenant of Water</span><span class=\"ds-catalog__leader\"></span><span class=\"ds-catalog__note\">Abraham Verghese</span></li></ul>",
+      "css": ".ds-catalog { list-style:none;margin:0;padding:0; }.ds-catalog > li { display:flex;align-items:baseline;gap:0.75rem;padding-block:0.7rem;border-bottom:1px solid rgba(22,41,77,0.16); }.ds-catalog > li:first-child { border-top:1px solid rgba(22,41,77,0.16); }.ds-catalog__title { font-family:Cormorant Garamond,EB Garamond,Garamond,Times New Roman,serif;font-size:1.3rem;font-weight:600;letter-spacing:-0.01em;flex:none;max-width:78%;color:var(--ink, #23272e); }.ds-catalog__leader { flex:1 1 auto;min-width:1.5rem;border-bottom:1px dotted rgba(22,41,77,0.55);transform:translateY(-0.28em); }.ds-catalog__note { flex:none;font-family:Lato,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.8125rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;color:var(--ink-soft, #3f4a5c);white-space:nowrap; }@media (max-width:560px) { .ds-catalog > li { flex-wrap:wrap;gap:0.25rem 0.75rem; }.ds-catalog__leader { display:none; } .ds-catalog__note { width:100%; } }"
+    },
+    {
+      "name": "Sowing Step",
+      "kind": "custom",
+      "description": "The numbered instruction row. The numeral is a CSS counter rendered as decimal-leading-zero Cormorant lining figures; it is never typed into the markup.",
+      "html": "<div class=\"ds-steps\"><div class=\"ds-step\"><div><h3>You tell us about your group</h3><p>How many women, what they are carrying, and how often you can gather them.</p></div></div><div class=\"ds-step\"><div><h3>We choose the book together</h3><p>We bring three options chosen for your group and the reason behind each one.</p></div></div></div>",
+      "css": ".ds-steps { counter-reset:step;display:grid;gap:0; }.ds-step { counter-increment:step;display:grid;grid-template-columns:4.25rem minmax(0,1fr);gap:1.5rem 2rem;padding-block:2.5rem;border-top:1px solid rgba(22,41,77,0.16);align-items:start; }.ds-steps > .ds-step:last-child { border-bottom:1px solid rgba(22,41,77,0.16); }.ds-step::before { content:counter(step, decimal-leading-zero);font-family:Cormorant Garamond,EB Garamond,Garamond,Times New Roman,serif;font-size:3.25rem;font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1;font-weight:500;line-height:0.9;color:var(--orange-ink, #b04419);letter-spacing:-0.03em; }.ds-step h3 { font-family:Cormorant Garamond,EB Garamond,Garamond,Times New Roman,serif;font-size:1.75rem;font-weight:600;line-height:1.16;letter-spacing:-0.018em;margin:0 0 0.75rem;color:var(--ink, #23272e); }.ds-step p { margin:0;font-family:Lato,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:1.0625rem;line-height:1.68;color:var(--ink-soft, #3f4a5c);max-width:58ch; }@media (max-width:620px) { .ds-step { grid-template-columns:minmax(0,1fr);gap:0.75rem; }.ds-step::before { font-size:2rem; } }"
+    },
+    {
+      "name": "Seed Packet",
+      "kind": "custom",
+      "refersTo": "packet",
+      "description": "The kit-contents disclosure. A cream cell in a hairline-gapped grid holding a sage line icon, a subhead, muted copy, and a tracked orange affordance; the back panel opens via grid-template-rows 0fr to 1fr.",
+      "html": "<div class=\"ds-packets\"><div class=\"ds-packet-cell\"><button class=\"ds-packet\" type=\"button\" aria-expanded=\"false\" aria-controls=\"ds-packet-back\"><svg class=\"ds-packet__icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M12 6.8C10.4 5.4 8.4 4.7 5.6 4.7c-.7 0-1.1.4-1.1 1v11.5c0 .6.4 1 1.1 1 2.8 0 4.8.7 6.4 2.1 1.6-1.4 3.6-2.1 6.4-2.1.7 0 1.1-.4 1.1-1V5.7c0-.6-.4-1-1.1-1-2.8 0-4.8.7-6.4 2.1Zm0 0v13.5\"/></svg><h3>The book</h3><p>One copy per woman, chosen for the group and hers to keep.</p><span class=\"ds-packet__flip\">Sowing instructions <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m5 9 7 7 7-7\"/></svg></span></button><div class=\"ds-packet__back\" id=\"ds-packet-back\"><div><p>Sowing: the group reads at whatever pace suits them.</p></div></div></div></div>",
+      "css": ".ds-packets { display:grid;grid-template-columns:minmax(0,20rem);gap:1px;background:rgba(22,41,77,0.16);border:1px solid rgba(22,41,77,0.16); }.ds-packet-cell { display:flex;flex-direction:column;background:var(--cream, #f5f1e8); }.ds-packet { position:relative;background:transparent;padding:2rem 1.5rem 1.5rem;text-align:left;font:inherit;color:var(--ink, #23272e);border:0;border-radius:0;cursor:pointer;flex:1 1 auto;display:flex;flex-direction:column;gap:0.75rem;transition:background-color 0.3s cubic-bezier(0.16,1,0.3,1); }.ds-packet:hover { background:rgba(22,41,77,0.05); }.ds-packet:focus-visible {outline:3px solid var(--orange, #e15d2a);outline-offset:3px;border-radius:2px;}.ds-packet__icon { width:2.5rem;height:2.5rem;color:var(--sage, #708058);flex:none; }.ds-packet h3 { font-family:Cormorant Garamond,EB Garamond,Garamond,Times New Roman,serif;font-size:1.3rem;font-weight:600;line-height:1.25;letter-spacing:-0.018em;margin:0; }.ds-packet p { margin:0;font-family:Lato,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.9375rem;line-height:1.68;color:var(--ink-soft, #3f4a5c); }.ds-packet__flip { margin-top:auto;padding-top:1rem;font-family:Lato,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.6875rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange-ink, #b04419);display:inline-flex;align-items:center;gap:0.4rem; }.ds-packet__flip svg { width:0.9em;height:0.9em;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1); }.ds-packet[aria-expanded='true'] .ds-packet__flip svg { transform:rotate(180deg); }.ds-packet__back { display:grid;grid-template-rows:0fr;transition:grid-template-rows 0.42s cubic-bezier(0.16,1,0.3,1); }.ds-packet[aria-expanded='true'] + .ds-packet__back { grid-template-rows:1fr; }.ds-packet__back > div { overflow:hidden; }.ds-packet__back p { margin:0 1.5rem 1.5rem;padding-top:1rem;border-top:1px solid rgba(22,41,77,0.16);font-family:Lato,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.9375rem;line-height:1.68;color:var(--ink-soft, #3f4a5c); }"
+    },
+    {
+      "name": "Ruled Note",
+      "kind": "custom",
+      "description": "The form this system uses when a reader needs an answer rather than a route: a single indented line behind a strong hairline, sitting under the doors. Deliberately not a fourth door, and never a card.",
+      "html": "<p class=\"ds-ruled-note\">Hoping to join a club yourself? Our clubs run through partner organizations right now. <a href=\"#\">Tell us where you are</a> and we will tell you whether one is near you.</p>",
+      "css": ".ds-ruled-note { max-width:62ch;margin:2rem 0 0;padding-left:1.5rem;border-left:1px solid rgba(22,41,77,0.55);font-family:Lato,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:0.9375rem;line-height:1.68;color:var(--ink-soft, #3f4a5c); }.ds-ruled-note a { color:var(--orange-ink, #b04419);text-decoration-thickness:1px;text-underline-offset:0.22em; }.ds-ruled-note a:hover { color:var(--orange-action, #c65225); }.ds-ruled-note a:focus-visible { outline:3px solid var(--orange, #e15d2a);outline-offset:3px;border-radius:2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Illustrated Seed Catalog",
+    "overview": "The site is built as an antique illustrated seed catalog rendered for the screen. Navy is the ground the way a lithographic plate is printed on a dark page; cream and warm-cream panels sit on that ground like mounted specimens. Poppy orange is the bloom — it appears where something is alive or actionable and nowhere else. Sage is foliage. Kraft is the paper stock the whole thing is notionally printed on, and it surfaces as the tint behind operational notices.\n\nThe grammar is a printer's grammar rather than an app's. Hairline rules separate everything; nothing is a floating card. Dot leaders run between a book title and its author. Ruled ledger rows pair a tracked uppercase term with its definition. Illustrations are held inside double-ruled plate frames with a printed caption underneath. Sowing steps are numbered with decimal-leading-zero Cormorant figures. Tracked Lato column heads open lists and tables, and Cormorant Garamond carries every voice above them. Density is generous rather than tight: long measures, wide section rhythm, and enough air that a page reads as a printed spread rather than a dashboard.\n\nThe world was chosen against a specific alternative, and that refusal is binding: this is not the cream-ground charity landing page with soft photographs of hands holding books. There is no pity framing in the visual language, no rounded pastel card grid, no drop-shadowed testimonial tile. The audience often arrives on an older phone over a slow connection, so the system is deliberately cheap to render — flat fills, hairline borders, self-hosted fonts, responsive image variants, one shadow in the entire stylesheet, and one authored motion moment that starts from an already-visible default.\n\nThis is a Colorado nonprofit. Copy, class names and this document are all set in American English: \"catalog\", not \"catalogue\"; \"color\", not \"colour\". The class is `.catalog`, and a new component that spells it the other way is drift.",
+    "keyCharacteristics": [
+      "Deep navy ground carrying cream specimen plates; five section grounds and no sixth.",
+      "Poppy orange reserved for the bloom: the donate action, rules, numerals and small cross-reference links.",
+      "Zero border radius anywhere except the 2px softening on the focus ring.",
+      "Hairline rules on a shared grid instead of cards, gaps and shadows.",
+      "Cormorant Garamond for everything that speaks; tracked uppercase Lato for everything that labels.",
+      "Contrast is engineered, not assumed: three colors are derived from the brand palette so text on them passes WCAG AA, and the strong hairline is tuned per ground so every control boundary passes WCAG 1.4.11.",
+      "Photographs ship at the size they will be displayed. The mobile home page weighs 134 KB above the fold.",
+      "Everything works with JavaScript removed."
+    ],
+    "rules": [
+      {
+        "name": "The Bloom Rule",
+        "body": "Orange is the bloom, never the wallpaper. No orange fills a section ground, a card, or a large panel. It appears on the donate button, on hairline accents, on numerals, on small tracked links and on the focus ring — and its scarcity is what makes the donate button the loudest thing on any screen.",
+        "section": "colors"
+      },
+      {
+        "name": "The Derived Three Rule",
+        "body": "Brand orange `#e15d2a` and brand sage `#708058` are display colors: legal at 24px and above, and for rules, icons and numerals where 3:1 applies. The moment a color has to carry small text or sit behind white text, it becomes one of the three derived values — `orange-action` for white-on-orange, `orange-ink` for small orange on cream, `sage-deep` for white-on-sage. This derivation is deliberate and load-bearing. Rendered-DOM audits across all eleven pages, at 1440px and 400px, return zero failures on both axes: text contrast at 4.5:1 (3:1 for large), and non-text contrast at 3:1 for every input, select, textarea and button boundary. Do not spend that.",
+        "section": "colors"
+      },
+      {
+        "name": "The Boundary Rule",
+        "body": "`--line` is decoration and `--line-strong` is a control boundary, and they are not interchangeable. Every visible edge a user has to find — a text field, a select, a textarea, an outline button, a plate frame — uses `--line-strong`, which is tuned per ground to clear WCAG 1.4.11: `rgba(22,41,77,0.55)` on cream and aged cream (3.4:1), `rgba(245,241,232,0.45)` on press black-navy (3.9:1), `rgba(245,241,232,0.44)` over the hero and banner scrims, `rgba(245,241,232,0.4)` on navy, `rgba(255,255,255,0.5)` on sage. Lowering any of them puts a form field back under threshold, and the audience includes women reading on old phones and shared facility desktops.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ground-Sets-Ink Rule",
+        "body": "Section grounds redefine the foreground, muted foreground and hairline colors for everything inside them. Components read those inherited values instead of hardcoding a text color, which is why the same ledger, step or packet can sit on cream, aged cream, navy, press black-navy or sage without a variant. A new component that hardcodes a text color breaks on four of the five grounds.",
+        "section": "colors"
+      },
+      {
+        "name": "The Serif-For-Voice Rule",
+        "body": "Cormorant carries anything that speaks — headlines, statements, quotes, leads, catalog entry titles, the ledger's question rows, maker names, the footer tagline, and the step numerals. Lato carries anything that labels, navigates or acts. A sans-serif heading and a serif button are both wrong.",
+        "section": "typography"
+      },
+      {
+        "name": "The Column Head Rule",
+        "body": "A tracked uppercase label sits on a hairline that opens a list, a table or a column — never above a heading as a kicker. The ruled head that pairs a left and right label across a rule is the canonical form; it introduces content, and a heading immediately below it is a misuse.",
+        "section": "typography"
+      },
+      {
+        "name": "The Leading-Zero Rule",
+        "body": "Sequence numbers are `decimal-leading-zero` Cormorant figures with lining numerals forced on, produced by a counter. `01`, not `1`, and never a circled or filled badge.",
+        "section": "typography"
+      },
+      {
+        "name": "The One-H1 Rule",
+        "body": "Every page carries exactly one `h1` and descends without skipping a level. Visual size comes from the type ramp, never from reaching for a smaller heading tag. This is why the footer's column labels are `<p class=\"footer__head\">` inside a labelled `<nav>` rather than `<h2>`s: at 0.8125rem they would have outranked real section headings in the screen-reader outline while reading as fine print on screen.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ruled-Not-Boxed Rule",
+        "body": "Groups of things are separated by 1px hairlines on a shared grid line, not by cards floating in gaps. Doors, sowing steps, ledger rows, maker rows and catalog entries are all borders on a continuous grid. If a new block needs to feel like a set, rule it; do not box it.",
+        "section": "layout"
+      },
+      {
+        "name": "The Adjacent Ground Rule",
+        "body": "Two consecutive sections sharing the same ground read as one page, so the second drops its top padding entirely. This holds for navy, press black-navy, aged cream and sage. Stacking two full section paddings of empty ground between them is the bug this prevents.",
+        "section": "layout"
+      },
+      {
+        "name": "The No-Clipping Rule",
+        "body": "Overflow is prevented, not hidden. A layout that needs `overflow-x: hidden` on the page to look right has a track that will not shrink, and the fix is `minmax(0, 1fr)` on that track. Masking it leaves the content unreachable at 400px while the audit reads clean.",
+        "section": "layout"
+      },
+      {
+        "name": "The One Shadow Rule",
+        "body": "Exactly one shadow in the system reads as elevation and it belongs to the donate action. A new card, panel, dropdown or tooltip gets a hairline border and a tonal ground, not a shadow.",
+        "section": "elevation-depth"
+      },
+      {
+        "name": "The Square Corner Rule",
+        "body": "Nothing in this system is rounded. If a new component arrives with a radius, remove it — the only permitted radius is the 2px on the focus ring.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Double Rule Rule",
+        "body": "An illustration is framed twice or not at all: outer strong hairline, a small gutter of ground, inner light hairline on the image itself, caption outside. A bare image with a single border is a half-drawn plate.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** compose new sections from the five grounds — page cream, aged cream, catalog navy, press black-navy, deep sage — and let the ground set the text, muted text and hairline colors rather than assigning them per component.",
+      "**Do** separate related items with 1px hairlines on a shared grid, per **The Ruled-Not-Boxed Rule**.",
+      "**Do** reach for the derived tier the instant a color has to carry small text or sit behind white, per **The Derived Three Rule**.",
+      "**Do** keep `--line-strong` at or above 3:1 on its ground, per **The Boundary Rule** — it is the only visible edge on every input, `<select>`, textarea and outline button on the site.",
+      "**Do** frame every illustration as a plate — outer strong rule, gutter, inner rule, caption outside, per **The Double Rule Rule**.",
+      "**Do** ship a photograph at the size it will be displayed: a `srcset` with `sizes`, real variants on disk, `width`/`height` matching the intrinsic size of the file `src` points at, and `loading=\"lazy\"` on everything below the fold.",
+      "**Do** give every new interactive element the global focus treatment: a 3px poppy orange outline at 3px offset with the 2px radius.",
+      "**Do** keep every page to one `h1` with no skipped levels, per **The One-H1 Rule**, and take the visual size from the type ramp rather than from a heading tag.",
+      "**Do** author motion from an already-visible default. The reveal attribute is opacity 1 in the base stylesheet and only becomes hidden once the script adds its class to the document element, so a failed script leaves content readable. Keep every transition inside the shared `cubic-bezier(0.16, 1, 0.3, 1)` easing and under a second.",
+      "**Do** keep the orange donate button in the masthead on every new page, at every scroll position.",
+      "**Do** hold prose to the 68ch measure and secondary prose to 58ch.",
+      "**Do** write American English in copy, class names and this document."
+    ],
+    "donts": [
+      "**Don't** add a border radius. Square corners are the form language, per **The Square Corner Rule**.",
+      "**Don't** put white text on brand orange `#e15d2a` or brand sage `#708058`, or set small orange text on cream in brand orange. Those combinations fail AA and are exactly what the derived tier exists to prevent.",
+      "**Don't** use orange as a background for anything larger than a button, per **The Bloom Rule**.",
+      "**Don't** add a lifting `box-shadow`. Depth is tonal, per **The One Shadow Rule**.",
+      "**Don't** put a tracked uppercase label above a heading as a kicker, per **The Column Head Rule**.",
+      "**Don't** reach for `overflow-x: hidden` on the page to fix a wide layout, per **The No-Clipping Rule**. Find the track that will not shrink.",
+      "**Don't** ship a developer note, a placeholder marker or a to-do inside a page. Those belong in `README.md`; the visitor is not their audience.",
+      "**Don't** make content depend on JavaScript. The mobile navigation, the seed packet disclosure and the scroll reveal all degrade to plain, fully readable markup with the script removed, and new work must too.",
+      "**Don't** introduce motion that cannot be reduced. A global `prefers-reduced-motion` block collapses every animation and transition to 0.001ms and forces revealed content visible; anything animated outside that net is a defect.",
+      "**Don't** recolor, restyle, stretch or retype the logo, and don't drop it below the brand guide's 130px on-screen minimum in new work.",
+      "**Don't** revert to the refused world: cream-ground charity landing pages, soft photographs of hands holding books, rounded pastel card grids, or before-and-after pity framing."
+    ]
+  }
+}

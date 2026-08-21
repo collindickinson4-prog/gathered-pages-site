@@ -1,0 +1,13 @@
+# Lavish review sessions — local preview copies and screenshots
+.lavish/
+
+# Original shared-drive dump and the zip it came from — source material, not the site
+source/
+*.zip
+
+# Vercel local link state
+.vercel/
+
+node_modules/
+.DS_Store
+Thumbs.db
