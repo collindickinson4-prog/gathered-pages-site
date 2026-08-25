@@ -105,7 +105,7 @@
           <h2>Send a message</h2>
         </div>
 
-        <form class="form" action="mailto:jamie@gatheredpages.org" method="post" enctype="text/plain">
+        <form class="form" data-contact novalidate>
           <div class="field">
             <label for="c-topic">What is this about?</label>
             <select id="c-topic" name="topic">
@@ -134,11 +134,16 @@
             <textarea id="c-message" name="message" required></textarea>
           </div>
 
+          <div class="field" hidden aria-hidden="true">
+            <label for="c-company">Company</label>
+            <input id="c-company" name="company" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
           <div class="btn-row btn-row--flush">
             <button class="btn btn--navy" type="submit">Send</button>
-            <a class="btn btn--outline" href="mailto:jamie@gatheredpages.org">Email directly</a>
           </div>
-          <p class="field-hint">This opens your email app with your message filled in. If nothing happens, write to <a href="mailto:jamie@gatheredpages.org">jamie@gatheredpages.org</a> instead.</p>
+          <p class="form__status text-soft" data-contact-status role="status" aria-live="polite"></p>
+          <p class="field-hint">Your message goes straight to Jamie, who reads every one herself.</p>
         </form>
       </div>
 

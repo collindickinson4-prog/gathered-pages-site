@@ -143,7 +143,7 @@
           if (result.ok) {
             form.reset();
             if (status) {
-              status.textContent = 'You are on the list. Watch for a confirmation email.';
+              status.textContent = 'You are on the list. Watch for a note from Jamie.';
               status.classList.add('is-done');
             }
           } else if (status) {
@@ -287,4 +287,71 @@
   });
 
   relabel();
+})();
+
+/* Contact form — posts the message to /api/contact, which mails it to Jamie.
+   The form used to open the visitor's own mail app, which warned about an
+   insecure submission and lost the message for anyone without desktop mail. */
+(function () {
+  var form = document.querySelector('[data-contact]');
+  if (!form) return;
+
+  var status = form.querySelector('[data-contact-status]');
+  var button = form.querySelector('button[type="submit"]');
+  var buttonText = button ? button.textContent : '';
+
+  function say(message, kind) {
+    if (!status) return;
+    status.textContent = message;
+    status.classList.remove('is-error', 'is-done');
+    if (kind) status.classList.add(kind);
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (form.dataset.sending === 'true') return;
+
+    var data = new FormData(form);
+    var payload = {
+      topic: (data.get('topic') || '').toString(),
+      name: (data.get('name') || '').toString().trim(),
+      email: (data.get('email') || '').toString().trim(),
+      message: (data.get('message') || '').toString().trim(),
+      company: (data.get('company') || '').toString()
+    };
+
+    if (!payload.name) return say('Please tell us your name.', 'is-error');
+    if (!payload.email) return say('Please add your email so we can write back.', 'is-error');
+    if (!payload.message) return say('Please write a message.', 'is-error');
+
+    form.dataset.sending = 'true';
+    if (button) { button.disabled = true; button.textContent = 'Sending\u2026'; }
+    say('');
+
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (response) {
+        return response.json().catch(function () { return {}; }).then(function (body) {
+          return { ok: response.ok, body: body };
+        });
+      })
+      .then(function (result) {
+        if (result.ok) {
+          form.reset();
+          say('Thank you \u2014 your message is with Jamie. She answers everything herself, usually within a few days.', 'is-done');
+        } else {
+          say(result.body.error || 'Something went wrong. Please write to jamie@gatheredpages.org.', 'is-error');
+        }
+      })
+      .catch(function () {
+        say('Something went wrong. Please write to jamie@gatheredpages.org.', 'is-error');
+      })
+      .then(function () {
+        form.dataset.sending = 'false';
+        if (button) { button.disabled = false; button.textContent = buttonText; }
+      });
+  });
 })();
