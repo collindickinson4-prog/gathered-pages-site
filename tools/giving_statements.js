@@ -36,7 +36,11 @@ const ORG = {
   email: 'jamie@gatheredpages.org',
   site: 'gatheredpages.org',
   signer: 'Jamie Dickinson',
-  signerTitle: 'Founder'
+  signerTitle: 'Founder',
+  // Mail clients will not load a file from disk, so the letterhead points at
+  // the live site. The statement still reads correctly if a client blocks the
+  // image: the name and address sit beside it as text, not inside it.
+  logo: 'https://www.gatheredpages.org/assets/img/logo-navy.png'
 };
 
 // The sentence that makes a gift substantiable. Same wording as the receipts.
@@ -172,6 +176,10 @@ function renderStatement(donor, year) {
     '  }',
     '  h1 { font-family: "Cormorant Garamond", Garamond, "Times New Roman", serif;',
     '       font-size: 26pt; font-weight: 500; letter-spacing: -0.01em; margin: 0 0 0.35rem; }',
+    '  .letterhead { width: 100%; border-collapse: collapse; }',
+    '  .letterhead td { vertical-align: top; padding: 0; border: 0; }',
+    '  .letterhead .mark { width: 96px; padding-right: 18px; }',
+    '  .letterhead .mark img { display: block; width: 96px; height: auto; border: 0; }',
     '  .org { font-size: 9.5pt; line-height: 1.5; color: #3f4a5c; }',
     '  .org strong { display: block; font-size: 11pt; color: #16294d; letter-spacing: 0.02em; }',
     '  .rule { border: 0; border-top: 2px solid #16294d; margin: 1.5rem 0; }',
@@ -194,12 +202,21 @@ function renderStatement(donor, year) {
     '</style>',
     '</head>',
     '<body>',
-    '  <div class="org">',
-    '    <strong>' + escapeHtml(ORG.name) + '</strong>',
-    '    ' + ORG.address.map(escapeHtml).join('<br>') + '<br>',
-    '    ' + escapeHtml(ORG.email) + ' &#183; ' + escapeHtml(ORG.site) + '<br>',
-    '    EIN ' + escapeHtml(ORG.ein),
-    '  </div>',
+    // A table, not a flex row: Outlook and several webmail clients still lay
+    // out mail the way browsers did in 2003.
+    '  <table class="letterhead" role="presentation" cellpadding="0" cellspacing="0">',
+    '    <tr>',
+    '      <td class="mark">',
+    '        <img src="' + escapeHtml(ORG.logo) + '" width="96" alt="' + escapeHtml(ORG.name) + '">',
+    '      </td>',
+    '      <td class="org">',
+    '        <strong>' + escapeHtml(ORG.name) + '</strong>',
+    '        ' + ORG.address.map(escapeHtml).join('<br>') + '<br>',
+    '        ' + escapeHtml(ORG.email) + ' &#183; ' + escapeHtml(ORG.site) + '<br>',
+    '        EIN ' + escapeHtml(ORG.ein),
+    '      </td>',
+    '    </tr>',
+    '  </table>',
     '',
     '  <hr class="rule">',
     '',
