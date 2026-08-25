@@ -17,3 +17,6 @@ Thumbs.db
 # Secrets - Kit API key lives here locally
 .env
 .env.local
+
+# Year-end giving statements - donor names, emails and amounts
+statements/
