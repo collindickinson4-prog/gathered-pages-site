@@ -28,8 +28,10 @@ tools/build_pages.py      Optional. Regenerates the ten generated HTML files so 
                           masthead, footer and <head> stay identical across
                           them. You can ignore it and edit the HTML directly.
 tools/check_site.py       Run this after any edit. See "Checking your work".
-tools/giving_statements.js  Year-end giving statements. Run each January:
-                          node tools/giving_statements.js
+tools/giving_statements.js  Year-end giving statements. Each January:
+                          node tools/giving_statements.js 2026
+                          node tools/giving_statements.js 2026 --test=you@example.com
+                          node tools/giving_statements.js 2026 --send
 
 PRODUCT.md                Durable product truth: users, positioning, brand
                           commitments, legal status, and the list of facts

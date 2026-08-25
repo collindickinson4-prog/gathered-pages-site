@@ -1,7 +1,9 @@
 // Year-end giving statements.
 //
-//     node tools/giving_statements.js            the year that just ended
-//     node tools/giving_statements.js 2026       a particular year
+//     node tools/giving_statements.js                 the year that just ended
+//     node tools/giving_statements.js 2026            a particular year
+//     node tools/giving_statements.js 2026 --test=me@example.com
+//     node tools/giving_statements.js 2026 --send     email every donor
 //
 // A donor who gave $25 a month has twelve receipts and no acknowledgement of
 // the $300 she actually gave. The IRS wants one written statement per donor
@@ -10,12 +12,19 @@
 //
 // Reads every succeeded charge in the year from Stripe, subtracts refunds,
 // groups by donor, and writes one print-ready statement per donor plus a CSV
-// to check the totals against the books. Nothing is emailed: the files land in
-// statements/<year>/ and Jamie sends them herself.
+// to check the totals against the books. The files land in statements/<year>/.
 //
-// Needs STRIPE_SECRET_KEY, from the environment or from .env in the project
-// root. The output holds donor names, emails and amounts, so statements/ is
-// gitignored - keep it off shared drives.
+// Sending is a separate, deliberate second run. Look at the numbers first:
+// these letters go to real donors and a wrong total is worse than a late one.
+// --test sends one real donor's statement to an address of your choosing so
+// you can see what lands. --send then mails everyone, recording each address
+// in sent.csv as it goes, so a re-run after a failure picks up where it
+// stopped instead of mailing anyone twice.
+//
+// Needs STRIPE_SECRET_KEY, and for sending RESEND_API_KEY and RESEND_FROM,
+// from the environment or from .env in the project root. The output holds
+// donor names, emails and amounts, so statements/ is gitignored - keep it off
+// shared drives.
 
 const fs = require('fs');
 const path = require('path');
@@ -37,17 +46,24 @@ const ACKNOWLEDGEMENT =
   'Your gifts are tax-deductible to the extent allowed by law.';
 
 const CHARGES_ENDPOINT = 'https://api.stripe.com/v1/charges';
+const EMAIL_ENDPOINT = 'https://api.resend.com/emails';
 const PAGE_SIZE = 100;
+
+// Resend allows a couple of requests a second on the free plan. A pause
+// between letters keeps a hundred donors from tripping the rate limit.
+const SEND_PAUSE_MS = 600;
 
 // ---------------------------------------------------------------- helpers ---
 
-function secretKey() {
-  if (process.env.STRIPE_SECRET_KEY) return process.env.STRIPE_SECRET_KEY;
+// Environment first, then .env in the project root, so the same command works
+// on Jamie's machine and in a shell that already has the key exported.
+function setting(name) {
+  if (process.env[name]) return process.env[name];
   const envPath = path.join(__dirname, '..', '.env');
   if (fs.existsSync(envPath)) {
     const line = fs.readFileSync(envPath, 'utf8')
       .split(/\r?\n/)
-      .find(function (l) { return l.trim().indexOf('STRIPE_SECRET_KEY=') === 0; });
+      .find(function (l) { return l.trim().indexOf(name + '=') === 0; });
     if (line) return line.split('=').slice(1).join('=').trim().replace(/^["']|["']$/g, '');
   }
   return '';
@@ -235,6 +251,61 @@ function fileNameFor(donor, year) {
   return year + '-' + base + '.html';
 }
 
+// -------------------------------------------------------------- the post ---
+
+function subjectFor(year) {
+  return 'Your ' + year + ' giving statement — ' + ORG.name;
+}
+
+// One letter, through Resend. Returns the provider's message id so sent.csv
+// records something that can be looked up later.
+async function sendStatement(key, from, to, year, html) {
+  const response = await fetch(EMAIL_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + key,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      from: from,
+      to: [to],
+      reply_to: ORG.email,
+      subject: subjectFor(year),
+      html: html
+    })
+  });
+
+  const body = await response.json().catch(function () { return {}; });
+  if (!response.ok) {
+    throw new Error(response.status + ' ' + JSON.stringify(body.message || body.error || body).slice(0, 200));
+  }
+  return body.id || '';
+}
+
+// Who has already been written to this year. A crash halfway through a
+// hundred donors must not mean a hundred people get a second letter.
+function readSent(dir) {
+  const file = path.join(dir, 'sent.csv');
+  if (!fs.existsSync(file)) return new Set();
+  return new Set(
+    fs.readFileSync(file, 'utf8')
+      .split(/\r?\n/)
+      .slice(1)
+      .map(function (line) { return line.split(',')[0].trim().toLowerCase(); })
+      .filter(Boolean)
+  );
+}
+
+function recordSent(dir, email, id) {
+  const file = path.join(dir, 'sent.csv');
+  if (!fs.existsSync(file)) fs.writeFileSync(file, 'Email,Sent,Message ID\n', 'utf8');
+  fs.appendFileSync(file, [email, new Date().toISOString(), id].map(csvCell).join(',') + '\n', 'utf8');
+}
+
+function pause(ms) {
+  return new Promise(function (resolve) { setTimeout(resolve, ms); });
+}
+
 // ----------------------------------------------------------------- stripe ---
 
 async function fetchCharges(key, year) {
@@ -276,15 +347,30 @@ async function fetchCharges(key, year) {
 // ------------------------------------------------------------------- main ---
 
 async function main() {
-  const year = Number(process.argv[2]) || (new Date().getFullYear() - 1);
+  const args = process.argv.slice(2);
+  const send = args.indexOf('--send') !== -1;
+  const testArg = args.find(function (a) { return a.indexOf('--test=') === 0; });
+  const testTo = testArg ? testArg.slice('--test='.length).trim() : '';
+  const yearArg = args.find(function (a) { return a.indexOf('--') !== 0; });
+
+  const year = Number(yearArg) || (new Date().getFullYear() - 1);
   if (!(year > 2000 && year < 2200)) {
     console.error('Give a four-digit year, e.g. node tools/giving_statements.js 2026');
     process.exit(1);
   }
 
-  const key = secretKey();
+  const key = setting('STRIPE_SECRET_KEY');
   if (!key) {
     console.error('No STRIPE_SECRET_KEY. Put it in .env or pass it in the environment.');
+    process.exit(1);
+  }
+
+  // Fail before reading a year of charges rather than after.
+  const mailKey = (send || testTo) ? setting('RESEND_API_KEY') : '';
+  const mailFrom = (send || testTo) ? setting('RESEND_FROM') : '';
+  if ((send || testTo) && (!mailKey || !mailFrom)) {
+    console.error('Sending needs RESEND_API_KEY and RESEND_FROM in .env.');
+    console.error('RESEND_FROM looks like: Gathered Pages Collective <jamie@send.gatheredpages.org>');
     process.exit(1);
   }
   if (key.indexOf('sk_test') === 0) {
@@ -304,11 +390,14 @@ async function main() {
   fs.mkdirSync(outDir, { recursive: true });
 
   const index = [['Name', 'Email', 'Gifts', 'Total', 'Needs acknowledgement', 'File']];
+  const letters = new Map();
   let total = 0;
 
   donors.forEach(function (donor) {
     const file = fileNameFor(donor, year);
-    fs.writeFileSync(path.join(outDir, file), renderStatement(donor, year), 'utf8');
+    const html = renderStatement(donor, year);
+    fs.writeFileSync(path.join(outDir, file), html, 'utf8');
+    letters.set(donor.key, html);
     total += donor.total;
     index.push([
       donor.name,
@@ -327,19 +416,80 @@ async function main() {
   );
 
   const over250 = donors.filter(function (d) { return d.total >= 25000; }).length;
+  const reachable = donors.filter(function (d) { return d.email; });
+  const unreachable = donors.filter(function (d) { return !d.email; });
 
   console.log('');
   console.log('  ' + donors.length + ' donors, ' + money(total) + ' in ' + year);
   console.log('  ' + over250 + ' at $250 or more (the ones the IRS requires this for)');
   console.log('  written to statements/' + year + '/');
+
+  // One letter to an address of your choosing, so you see what a donor sees
+  // before any donor sees it.
+  if (testTo) {
+    const sample = reachable[0] || donors[0];
+    console.log('');
+    console.log('Sending ' + (sample.name || sample.email || 'a sample') + '’s statement to ' + testTo + '...');
+    const id = await sendStatement(mailKey, mailFrom, testTo, year, letters.get(sample.key));
+    console.log('  sent' + (id ? ' (' + id + ')' : ''));
+    console.log('');
+    console.log('Look at it. If it reads right, run the same command with --send.');
+    return;
+  }
+
+  if (!send) {
+    console.log('');
+    console.log('Nothing has been emailed. Check the totals in index.csv, then:');
+    console.log('  node tools/giving_statements.js ' + year + ' --test=you@example.com');
+    console.log('  node tools/giving_statements.js ' + year + ' --send');
+    return;
+  }
+
+  const already = readSent(outDir);
+  const queue = reachable.filter(function (d) { return !already.has(d.email); });
+
   console.log('');
-  console.log('Open any file in a browser and print to PDF to send it.');
+  if (already.size) console.log('  ' + already.size + ' already written to earlier - skipping those');
+  console.log('Emailing ' + queue.length + ' donors...');
+  console.log('');
+
+  let sent = 0;
+  const failed = [];
+
+  for (const donor of queue) {
+    try {
+      const id = await sendStatement(mailKey, mailFrom, donor.email, year, letters.get(donor.key));
+      recordSent(outDir, donor.email, id);
+      sent += 1;
+      console.log('  ✓ ' + donor.email + '  ' + money(donor.total));
+    } catch (error) {
+      failed.push({ email: donor.email, why: error.message });
+      console.log('  ✗ ' + donor.email + '  ' + error.message);
+    }
+    await pause(SEND_PAUSE_MS);
+  }
+
+  console.log('');
+  console.log('  ' + sent + ' sent, ' + failed.length + ' failed');
+  if (failed.length) {
+    console.log('  Run the same command again - the ones that went out are recorded in');
+    console.log('  sent.csv and will be skipped.');
+  }
+  if (unreachable.length) {
+    console.log('');
+    console.log('  ' + unreachable.length + ' donors have no email address on file. Their statements are');
+    console.log('  in statements/' + year + '/ - print those and post them.');
+  }
 }
 
 module.exports = {
   groupCharges: groupCharges,
   renderStatement: renderStatement,
   fileNameFor: fileNameFor,
+  sendStatement: sendStatement,
+  readSent: readSent,
+  recordSent: recordSent,
+  subjectFor: subjectFor,
   ACKNOWLEDGEMENT: ACKNOWLEDGEMENT
 };
 
