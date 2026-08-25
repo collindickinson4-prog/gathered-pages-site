@@ -143,9 +143,10 @@
           if (result.ok) {
             form.reset();
             if (status) {
-              status.textContent = 'You are on the list. Watch for a note from Jamie.';
+              status.textContent = 'You are on the list…';
               status.classList.add('is-done');
             }
+            window.location.href = 'newsletter-thank-you.html';
           } else if (status) {
             status.textContent = result.body.error || 'Something went wrong. Please email jamie@gatheredpages.org.';
             status.classList.add('is-error');

@@ -62,8 +62,8 @@ Two things a neighboring nonprofit could not truthfully copy:
 ## Operating Context
 
 - **Legal status:** Colorado nonprofit corporation, incorporated 6/10/2026.
-  EIN 42-3092238. 501(c)(3) application **submitted, not yet approved.** Until
-  approval lands, the site must not describe gifts as tax-deductible.
+  EIN 42-3092238. 501(c)(3) status **approved.** Gifts may be described as
+  tax-deductible to the extent allowed by law.
 - **Program models, in sequence:** donated boxes to partner organizations
   (now); paid "buy a box, give a box" boxes as the funding engine (on
   approval); virtual application-based clubs (once one facilitator playbook is
@@ -160,9 +160,9 @@ board member bios (drafted but not in the shared folder).
    homepage.
 3. **Dignity over pity.** Women are the subject, never the case study. No
    before-and-after framing, no "the needy," no charity-appeal guilt.
-4. **Say only what is true today.** No impact numbers, no testimonials, no
-   tax-deductibility claims until 501(c)(3) lands. Being early is part of the
-   story; pretending not to be is not.
+4. **Say only what is true today.** No impact numbers, no testimonials.
+   Tax-deductibility may be stated now that 501(c)(3) is approved. Being early
+   is part of the story; pretending not to be is not.
 5. **The ecosystem is the product.** Every woman-owned maker, bookstore, and
    author named on the site is both a credit we owe and a reason someone else
    shares us.
