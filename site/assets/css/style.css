@@ -1720,6 +1720,9 @@ body.is-nav-open { overflow: hidden; }
 /* The custom amount only appears once "Other" is the choice. */
 .give-other { margin-top: var(--s3); max-width: 18rem; }
 .give-other label { color: rgba(245, 241, 232, 0.72); }
+/* The field sits on white inside a plate that has redefined --fg as cream,
+   which .field input would otherwise inherit and type invisibly. */
+.give-other input { color: var(--ink); }
 
 .give-submit { width: 100%; margin-top: var(--s5); justify-content: center; }
 .give-panel .form__status { margin-top: var(--s3); }
