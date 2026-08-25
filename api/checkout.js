@@ -12,25 +12,25 @@
 // PRICES BELOW: these are Stripe price IDs, not secrets — they are safe in
 // the repository. Each one is created in the Stripe dashboard under its
 // product (Product -> Pricing -> the price_... shown beside the amount).
-// Test-mode and live-mode prices have different IDs, so these must be the
-// live ones once giving opens.
+// Test-mode and live-mode prices have different IDs. The ones below are the
+// LIVE prices, exported from the dashboard on 25 August 2026.
 
 const GIFTS = {
   // Product 1 — One-Time Gift. The amount is left to the donor, so this price
   // is the "customer chooses what to pay" kind and carries no fixed amount.
-  onetime:   { price: 'price_REPLACE_ONETIME',   mode: 'payment',      label: 'One-time gift' },
+  onetime:   { price: 'price_1U8LDm172S9w5H39Jerp9pwy',  mode: 'payment',      label: 'One-time gift' },
 
   // Product 2 — Recurring Gift. One product, four prices, one per interval.
-  weekly:    { price: 'price_REPLACE_WEEKLY',    mode: 'subscription', label: 'Recurring gift, weekly' },
-  monthly:   { price: 'price_REPLACE_MONTHLY',   mode: 'subscription', label: 'Recurring gift, monthly' },
-  quarterly: { price: 'price_REPLACE_QUARTERLY', mode: 'subscription', label: 'Recurring gift, quarterly' },
-  yearly:    { price: 'price_REPLACE_YEARLY',    mode: 'subscription', label: 'Recurring gift, yearly' },
+  weekly:    { price: 'price_1U8LI6172S9w5H39rp8CmFnL',  mode: 'subscription', label: 'Recurring gift, weekly' },
+  monthly:   { price: 'price_1U8LGy172S9w5H39174R6eQf',  mode: 'subscription', label: 'Recurring gift, monthly' },
+  quarterly: { price: 'price_1U8LI6172S9w5H390ZomQu2f',  mode: 'subscription', label: 'Recurring gift, quarterly' },
+  yearly:    { price: 'price_1U8LI6172S9w5H39qgDer92K',  mode: 'subscription', label: 'Recurring gift, yearly' },
 
   // Products 3 and 4 — fixed gifts. Both let the donor give more than one at
   // checkout, so a donor who means to fund three kits does not come back here
   // three times.
-  kit:       { price: 'price_REPLACE_KIT',       mode: 'payment',      label: 'One kit for one woman',  quantity: 20 },
-  box:       { price: 'price_REPLACE_BOX',       mode: 'payment',      label: 'A Book Club Box',        quantity: 10 }
+  kit:       { price: 'price_1U8LJG172S9w5H39wB4bYrkd',  mode: 'payment',      label: 'One kit for one woman',  quantity: 20 },
+  box:       { price: 'price_1U8LLj172S9w5H392bNETU5A',  mode: 'payment',      label: 'A Book Club Box',        quantity: 10 }
 };
 
 const SESSIONS_ENDPOINT = 'https://api.stripe.com/v1/checkout/sessions';
