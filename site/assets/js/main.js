@@ -165,28 +165,49 @@
   });
 })();
 
-/* Giving buttons — each one asks /api/checkout for a Stripe Checkout Session
-   and then hands the browser over to Stripe. Nothing about a card is ever
-   typed on this site. If the call fails the donor gets one line telling her to
-   email instead. */
+/* Giving panel — frequency, amount, one action. The choice is assembled here
+   and sent to /api/checkout, which asks Stripe for a Checkout Session and
+   sends back its URL. Nothing about a card is ever typed on this site. */
 (function () {
-  var buttons = document.querySelectorAll('[data-give]');
-  if (!buttons.length) return;
+  var panel = document.querySelector('[data-give-panel]');
+  if (!panel) return;
 
-  var status = document.querySelector('[data-give-status]');
-  var frequency = document.querySelector('[data-give-frequency]');
-  var recurringButton = document.querySelector('[data-give-recurring]');
-  var FREQUENCY_LABEL = {
-    weekly: 'Give weekly',
-    monthly: 'Give monthly',
-    quarterly: 'Give quarterly',
-    yearly: 'Give annually'
-  };
+  var tabs = panel.querySelectorAll('[data-frequency]');
+  var tiles = panel.querySelectorAll('[data-amount]');
+  var other = panel.querySelector('[data-give-other]');
+  var otherInput = panel.querySelector('[data-give-other-input]');
+  var submit = panel.querySelector('[data-give-submit]');
+  var status = panel.querySelector('[data-give-status]');
 
-  if (frequency && recurringButton) {
-    frequency.addEventListener('change', function () {
-      recurringButton.textContent = FREQUENCY_LABEL[frequency.value] || 'Give monthly';
+  var SUFFIX = { once: '', monthly: ' monthly', yearly: ' a year' };
+  var MIN = 5;
+  var MAX = 10000;
+
+  var frequency = 'once';
+  var choice = '50';
+
+  function amount() {
+    if (choice !== 'other') return Number(choice);
+    var typed = Number((otherInput.value || '').replace(/[^0-9.]/g, ''));
+    return typed > 0 ? Math.round(typed * 100) / 100 : 0;
+  }
+
+  function press(nodes, node) {
+    Array.prototype.forEach.call(nodes, function (n) {
+      n.setAttribute('aria-pressed', String(n === node));
     });
+  }
+
+  function relabel() {
+    var value = amount();
+    var money = value ? '$' + (value % 1 ? value.toFixed(2) : value) : '';
+    submit.textContent = 'Give' + (money ? ' ' + money : '') + SUFFIX[frequency];
+  }
+
+  function clearStatus() {
+    if (!status) return;
+    status.textContent = '';
+    status.classList.remove('is-error', 'is-done');
   }
 
   function fail(message) {
@@ -196,45 +217,74 @@
     status.classList.add('is-error');
   }
 
-  Array.prototype.forEach.call(buttons, function (button) {
-    button.addEventListener('click', function () {
-      if (button.dataset.sending === 'true') return;
-
-      var gift = button.dataset.give;
-      if (gift === 'recurring') gift = frequency ? frequency.value : 'monthly';
-
-      var buttonText = button.textContent;
-      button.dataset.sending = 'true';
-      button.disabled = true;
-      button.textContent = 'Taking you to checkout\u2026';
-      if (status) { status.textContent = ''; status.classList.remove('is-error', 'is-done'); }
-
-      fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ gift: gift })
-      })
-        .then(function (response) {
-          return response.json().catch(function () { return {}; }).then(function (body) {
-            return { ok: response.ok, body: body };
-          });
-        })
-        .then(function (result) {
-          if (result.ok && result.body.url) {
-            window.location.href = result.body.url;
-            return;
-          }
-          fail(result.body.error || 'Something went wrong. Please email jamie@gatheredpages.org.');
-          button.dataset.sending = 'false';
-          button.disabled = false;
-          button.textContent = buttonText;
-        })
-        .catch(function () {
-          fail('Something went wrong. Please email jamie@gatheredpages.org.');
-          button.dataset.sending = 'false';
-          button.disabled = false;
-          button.textContent = buttonText;
-        });
+  Array.prototype.forEach.call(tabs, function (tab) {
+    tab.addEventListener('click', function () {
+      frequency = tab.dataset.frequency;
+      press(tabs, tab);
+      clearStatus();
+      relabel();
     });
   });
+
+  Array.prototype.forEach.call(tiles, function (tile) {
+    tile.addEventListener('click', function () {
+      choice = tile.dataset.amount;
+      press(tiles, tile);
+      other.hidden = choice !== 'other';
+      if (choice === 'other') otherInput.focus();
+      clearStatus();
+      relabel();
+    });
+  });
+
+  otherInput.addEventListener('input', function () {
+    clearStatus();
+    relabel();
+  });
+
+  submit.addEventListener('click', function () {
+    if (submit.dataset.sending === 'true') return;
+
+    var value = amount();
+    if (!value) return fail('Please choose or enter an amount.');
+    if (value < MIN) return fail('The smallest gift we can take online is $' + MIN + '.');
+    if (value > MAX) return fail('For gifts over $' + MAX.toLocaleString() + ', please email jamie@gatheredpages.org.');
+
+    var buttonText = submit.textContent;
+    submit.dataset.sending = 'true';
+    submit.disabled = true;
+    submit.textContent = 'Taking you to checkout…';
+    clearStatus();
+
+    function restore() {
+      submit.dataset.sending = 'false';
+      submit.disabled = false;
+      submit.textContent = buttonText;
+    }
+
+    fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ frequency: frequency, amount: value })
+    })
+      .then(function (response) {
+        return response.json().catch(function () { return {}; }).then(function (body) {
+          return { ok: response.ok, body: body };
+        });
+      })
+      .then(function (result) {
+        if (result.ok && result.body.url) {
+          window.location.href = result.body.url;
+          return;
+        }
+        fail(result.body.error || 'Something went wrong. Please email jamie@gatheredpages.org.');
+        restore();
+      })
+      .catch(function () {
+        fail('Something went wrong. Please email jamie@gatheredpages.org.');
+        restore();
+      });
+  });
+
+  relabel();
 })();

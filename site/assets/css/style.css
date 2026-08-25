@@ -1626,3 +1626,114 @@ body.is-nav-open { overflow: hidden; }
 @media (max-width: 700px) {
   .give-option { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* --------------------------------------------------------------------------
+   GIVING PANEL
+   One navy plate carrying frequency, amount and a single action, so the donor
+   decides in one place instead of reading down five ruled rows. Orange marks
+   what she has chosen; everything unchosen stays quiet.
+   -------------------------------------------------------------------------- */
+
+.give-panel {
+  background: var(--navy);
+  color: var(--cream);
+  --fg: var(--cream);
+  --fg-soft: rgba(245, 241, 232, 0.72);
+  padding: clamp(1.5rem, 3.5vw, 2.75rem);
+  border: 1px solid var(--navy-lift);
+}
+
+.give-panel__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s4);
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: var(--s3);
+  border-bottom: 1px solid rgba(245, 241, 232, 0.18);
+}
+.give-panel__head .label { color: var(--orange-soft); }
+.give-panel__head p { margin: 0; font-size: var(--fs-fine); color: rgba(245, 241, 232, 0.72); }
+
+.give-field { margin-top: var(--s5); }
+.give-field > .label {
+  display: block;
+  margin-bottom: var(--s2);
+  color: rgba(245, 241, 232, 0.72);
+}
+
+/* Frequency: three equal tabs reading as one control. */
+.give-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s1); }
+
+/* Amounts: six tiles, three across, each carrying what the money becomes. */
+.give-amounts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s1); }
+
+.give-tab,
+.give-amount {
+  font: inherit;
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(245, 241, 232, 0.28);
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.give-tab:hover,
+.give-amount:hover { border-color: var(--orange-soft); }
+
+.give-tab {
+  text-align: center;
+  font-family: var(--sans);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  padding: 0.95rem 0.5rem;
+}
+
+.give-amount { padding: 0.85rem 1rem 0.95rem; }
+.give-amount strong {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+  line-height: 1.1;
+}
+.give-amount span {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: var(--fs-fine);
+  color: rgba(245, 241, 232, 0.66);
+}
+
+.give-tab[aria-pressed="true"],
+.give-amount[aria-pressed="true"] {
+  background: var(--orange-action);
+  border-color: var(--orange-action);
+  color: #fff;
+}
+.give-amount[aria-pressed="true"] span { color: rgba(255, 255, 255, 0.86); }
+
+/* The custom amount only appears once "Other" is the choice. */
+.give-other { margin-top: var(--s3); max-width: 18rem; }
+.give-other label { color: rgba(245, 241, 232, 0.72); }
+
+.give-submit { width: 100%; margin-top: var(--s5); justify-content: center; }
+.give-panel .form__status { margin-top: var(--s3); }
+.give-panel .form__status.is-error { color: var(--orange-soft); }
+.give-panel .form__status.is-done { color: var(--sage-pale); }
+
+.give-note {
+  margin: var(--s3) 0 0;
+  font-size: var(--fs-fine);
+  color: rgba(245, 241, 232, 0.66);
+}
+.give-note a { color: var(--orange-soft); }
+
+@media (max-width: 640px) {
+  .give-amounts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .give-tabs { grid-template-columns: minmax(0, 1fr); }
+}

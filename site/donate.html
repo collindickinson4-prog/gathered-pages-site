@@ -97,6 +97,52 @@
   </div>
 </section>
 
+<section class="section section--tight">
+  <div class="wrap wrap--mid">
+    <p class="fine text-soft measure" data-rise>Gathered Pages Collective is a 501(c)(3) tax-exempt organization, EIN 42-3092238. Your gift is tax-deductible to the extent allowed by law.</p>
+  </div>
+</section>
+
+<section class="section section--flush-top">
+  <div class="wrap wrap--mid">
+    <div class="give-panel" data-rise data-give-panel>
+      <div class="give-panel__head">
+        <span class="label label--orange">Give today</span>
+        <p>Secure checkout by Stripe</p>
+      </div>
+
+      <div class="give-field">
+        <span class="label" id="give-frequency-label">How often</span>
+        <div class="give-tabs" role="group" aria-labelledby="give-frequency-label">
+          <button class="give-tab" type="button" data-frequency="once" aria-pressed="true">One time</button>
+          <button class="give-tab" type="button" data-frequency="monthly" aria-pressed="false">Monthly</button>
+          <button class="give-tab" type="button" data-frequency="yearly" aria-pressed="false">Annually</button>
+        </div>
+      </div>
+
+      <div class="give-field">
+        <span class="label" id="give-amount-label">How much</span>
+        <div class="give-amounts" role="group" aria-labelledby="give-amount-label">
+          <button class="give-amount" type="button" data-amount="25" aria-pressed="false"><strong>$25</strong><span>A journal and a pen</span></button>
+          <button class="give-amount" type="button" data-amount="50" aria-pressed="true"><strong>$50</strong><span>One woman&#8217;s whole kit</span></button>
+          <button class="give-amount" type="button" data-amount="100" aria-pressed="false"><strong>$100</strong><span>Two kits</span></button>
+          <button class="give-amount" type="button" data-amount="250" aria-pressed="false"><strong>$250</strong><span>Half a book club</span></button>
+          <button class="give-amount" type="button" data-amount="500" aria-pressed="false"><strong>$500</strong><span>A whole Book Club Box</span></button>
+          <button class="give-amount" type="button" data-amount="other" aria-pressed="false"><strong>Other</strong><span>You choose</span></button>
+        </div>
+        <div class="field give-other" data-give-other hidden>
+          <label for="give-other-amount">Your amount (USD)</label>
+          <input id="give-other-amount" type="number" min="5" max="10000" step="1" inputmode="decimal" placeholder="75" data-give-other-input>
+        </div>
+      </div>
+
+      <button class="btn btn--donate give-submit" type="button" data-give-submit>Give $50</button>
+      <p class="form__status" data-give-status role="status" aria-live="polite"></p>
+      <p class="give-note">Prefer to give by check, or want to fund a whole book club for your own group? <a href="mailto:jamie@gatheredpages.org?subject=I%20would%20like%20to%20give%20to%20Gathered%20Pages">Email Jamie</a> and she will set it up personally.</p>
+    </div>
+  </div>
+</section>
+
 <section class="section section--navy">
   <div class="wrap wrap--mid">
     <dl class="ledger" data-rise>
@@ -107,68 +153,6 @@
       <div><dt>$50</dt><dd><strong>Approximately $50 provides one complete kit for one woman.</strong></dd></div>
       <div><dt>$500</dt><dd><strong>Approximately $500 provides a Book Club Box with ten individual kits.</strong></dd></div>
     </dl>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap wrap--mid">
-    <div class="section-intro" data-rise>
-      <h2>Choose How You&#8217;d Like to Give</h2>
-      <p>Giving is secure and handled by Stripe. If you would rather not give online, email our founder and she will set your gift up personally.</p>
-    </div>
-
-    <ul class="give-options mt-6" data-rise>
-      <li class="give-option">
-        <div>
-          <h3>One-Time Gift</h3>
-          <p>Choose the amount that feels meaningful to you.</p>
-        </div>
-        <button class="btn btn--donate" type="button" data-give="onetime">Give once</button>
-      </li>
-      <li class="give-option">
-        <div>
-          <h3>Recurring Gift</h3>
-          <p>Make an ongoing impact by giving $10 weekly, $25 monthly, $150 quarterly, or $500 a year.</p>
-          <div class="field mt-4">
-            <label for="give-frequency">How often</label>
-            <select id="give-frequency" data-give-frequency>
-              <option value="weekly">$10 weekly</option>
-              <option value="monthly" selected>$25 monthly</option>
-              <option value="quarterly">$150 quarterly</option>
-              <option value="yearly">$500 a year</option>
-            </select>
-          </div>
-        </div>
-        <button class="btn btn--donate" type="button" data-give="recurring" data-give-recurring>Give monthly</button>
-      </li>
-      <li class="give-option">
-        <div>
-          <h3>Give One Woman a Kit &#8212; $50</h3>
-          <p>Provide one woman with a complete reading and reflection experience. You can give more than one at checkout.</p>
-        </div>
-        <button class="btn btn--donate" type="button" data-give="kit">Give a kit</button>
-      </li>
-      <li class="give-option">
-        <div>
-          <h3>Give a Book Club Box &#8212; $500</h3>
-          <p>Provide ten women with individual kits and the opportunity to read, reflect, and connect.</p>
-        </div>
-        <button class="btn btn--donate" type="button" data-give="box">Give a box</button>
-      </li>
-      <li class="give-option">
-        <div>
-          <h3>Purchase a Book Club Box for your book club &#8212; $650</h3>
-          <p>Ten kits for your own group. We can also let your book club choose the book and the number of kits.</p>
-        </div>
-        <span class="btn btn--donate is-disabled" aria-disabled="true">Coming soon</span>
-      </li>
-    </ul>
-
-    <p class="form__status text-soft mt-4" data-give-status role="status" aria-live="polite"></p>
-
-    <div class="btn-row mt-6" data-rise>
-      <a class="btn btn--navy" href="mailto:jamie@gatheredpages.org?subject=I%20would%20like%20to%20give%20to%20Gathered%20Pages">Prefer to give by check or in person? Email Jamie</a>
-    </div>
   </div>
 </section>
 
@@ -183,14 +167,6 @@
         <p class="text-soft">If you would rather talk to a person before giving, our founder reads every message herself.</p>
         <a class="xref" href="contact.html">Write to Jamie <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15m0 0-5.5-5.5M19 12l-5.5 5.5"/></svg></a>
       </div>
-    </div>
-  </div>
-</section>
-<section class="section section--tight">
-  <div class="wrap wrap--mid">
-    <div class="notice" data-rise>
-      <p><strong>Our tax status.</strong></p>
-      <p>Gathered Pages Collective is a Colorado nonprofit corporation, incorporated 10 June 2026, EIN 42-3092238. The IRS has recognized us as a <strong>501(c)(3)</strong> tax-exempt organization, so your gift is tax-deductible to the extent allowed by law.</p>
     </div>
   </div>
 </section>
