@@ -164,3 +164,77 @@
     });
   });
 })();
+
+/* Giving buttons — each one asks /api/checkout for a Stripe Checkout Session
+   and then hands the browser over to Stripe. Nothing about a card is ever
+   typed on this site. If the call fails the donor gets one line telling her to
+   email instead. */
+(function () {
+  var buttons = document.querySelectorAll('[data-give]');
+  if (!buttons.length) return;
+
+  var status = document.querySelector('[data-give-status]');
+  var frequency = document.querySelector('[data-give-frequency]');
+  var recurringButton = document.querySelector('[data-give-recurring]');
+  var FREQUENCY_LABEL = {
+    weekly: 'Give weekly',
+    monthly: 'Give monthly',
+    quarterly: 'Give quarterly',
+    yearly: 'Give annually'
+  };
+
+  if (frequency && recurringButton) {
+    frequency.addEventListener('change', function () {
+      recurringButton.textContent = FREQUENCY_LABEL[frequency.value] || 'Give monthly';
+    });
+  }
+
+  function fail(message) {
+    if (!status) return;
+    status.textContent = message;
+    status.classList.remove('is-done');
+    status.classList.add('is-error');
+  }
+
+  Array.prototype.forEach.call(buttons, function (button) {
+    button.addEventListener('click', function () {
+      if (button.dataset.sending === 'true') return;
+
+      var gift = button.dataset.give;
+      if (gift === 'recurring') gift = frequency ? frequency.value : 'monthly';
+
+      var buttonText = button.textContent;
+      button.dataset.sending = 'true';
+      button.disabled = true;
+      button.textContent = 'Taking you to checkout\u2026';
+      if (status) { status.textContent = ''; status.classList.remove('is-error', 'is-done'); }
+
+      fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ gift: gift })
+      })
+        .then(function (response) {
+          return response.json().catch(function () { return {}; }).then(function (body) {
+            return { ok: response.ok, body: body };
+          });
+        })
+        .then(function (result) {
+          if (result.ok && result.body.url) {
+            window.location.href = result.body.url;
+            return;
+          }
+          fail(result.body.error || 'Something went wrong. Please email jamie@gatheredpages.org.');
+          button.dataset.sending = 'false';
+          button.disabled = false;
+          button.textContent = buttonText;
+        })
+        .catch(function () {
+          fail('Something went wrong. Please email jamie@gatheredpages.org.');
+          button.dataset.sending = 'false';
+          button.disabled = false;
+          button.textContent = buttonText;
+        });
+    });
+  });
+})();
