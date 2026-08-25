@@ -25,6 +25,13 @@ const GIFTS = {
 const MIN_CENTS = 500;
 const MAX_CENTS = 1000000;
 
+// The IRS asks a charity to tell the donor, in writing, that she received
+// nothing in return for a gift of $250 or more. Stripe's receipt has no footer
+// field of its own, so the sentence rides on the payment description, which is
+// what the receipt prints as its summary line.
+const ACKNOWLEDGEMENT = 'No goods or services were provided in exchange for this contribution. '
+  + 'Gathered Pages Collective is a 501(c)(3) tax-exempt organization, EIN 42-3092238.';
+
 const SESSIONS_ENDPOINT = 'https://api.stripe.com/v1/checkout/sessions';
 const FALLBACK_SITE = 'https://www.gatheredpages.org';
 
@@ -113,9 +120,12 @@ module.exports = async function handler(req, res) {
     // record is kept so the gift shows against a person in the dashboard.
     params.submit_type = 'donate';
     params.customer_creation = 'always';
-    params.payment_intent_data = { description: gift.label + ' \u2014 Gathered Pages Collective' };
+    params.payment_intent_data = { description: gift.label + ' to Gathered Pages Collective. ' + ACKNOWLEDGEMENT };
   } else {
-    params.subscription_data = { metadata: { gift: body.frequency } };
+    params.subscription_data = {
+      description: gift.label + ' to Gathered Pages Collective. ' + ACKNOWLEDGEMENT,
+      metadata: { gift: body.frequency }
+    };
   }
 
   try {
