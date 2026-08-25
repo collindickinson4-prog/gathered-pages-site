@@ -83,17 +83,22 @@ Two things a neighboring nonprofit could not truthfully copy:
 
 ## Capabilities and Constraints
 
-- Static site. No CMS, no backend, no database.
-- No payment processor selected yet. The donate action must be prominent and
-  permanently visible, but its destination is a clearly marked placeholder the
-  founder swaps in later.
-- Contact form has no backend; it must degrade to a real mailto or a form
-  service the founder can wire up.
-- Pages to build: Home, About, How It Works, Meet Our Founder, Partner With Us,
-  What's In The Box, Our Reading List, Women-Owned Partners, Contact, Donate.
-- **Undecided product facts, not to be invented:** processor and donation
-  amounts; box price for the paid tier; number of women served; launch dates;
-  named partner organizations that have not agreed publicly.
+- Static site, hosted on Vercel. No CMS, no database, no build step. The only
+  server-side code is a handful of functions under `api/`, each one calling a
+  REST API with `fetch`.
+- **Stripe** takes the donations, live since 25 August 2026. Gifts are one-time,
+  monthly or annual, at $25 / $50 / $100 / $250 / $500 or an amount the donor
+  types, from $5 to $10,000. Card details never touch the site; Stripe hosts
+  the checkout page.
+- **Resend** sends the contact form and the year-end giving statements, from
+  the verified subdomain `send.gatheredpages.org`. **Kit** holds the newsletter
+  list.
+- Pages: Home, About, How It Works, Meet Our Founder, Meet The Board, Partner
+  With Us, What's In The Box, Women-Owned Partners, Contact, Donate, Newsletter,
+  and the two thank-you pages people land on after giving or subscribing.
+- **Undecided product facts, not to be invented:** box price for the paid tier
+  (the $650 group purchase is written but not open); number of women served;
+  launch dates; named partner organizations that have not agreed publicly.
 
 ## Brand Commitments
 

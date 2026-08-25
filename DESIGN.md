@@ -803,12 +803,13 @@ one at 620px; the 16rem minimum height is released once they stack.
 - **Placeholder:** Field Placeholder at full opacity.
 - **Layout:** fields stack in a 40rem-wide grid with `1.5rem` gaps; paired
   fields share a two-column row that collapses below 620px.
-- **Submission:** both forms post to `mailto:jamie@gatheredpages.org` with
-  `enctype="text/plain"`. There is no backend, so the mechanism is made visible
-  rather than hidden: a `.field-hint` in Fine type below the button explains that
-  the browser will hand the message to the visitor's own mail app, and names the
-  address as a plain link in case nothing happens. An outline "Email directly"
-  button sits beside the submit as the same escape hatch.
+- **Submission:** the contact form and the newsletter form post to serverless
+  functions under `api/`, which mail the message on and answer in JSON. Feedback
+  is one `.form__status` line below the button, empty until there is something to
+  say: sage for success, orange ink for failure. The partner application still
+  posts to `mailto:jamie@gatheredpages.org` with `enctype="text/plain"`, carrying
+  a `.field-hint` that explains the browser will hand the message to the
+  visitor's own mail app.
 
 ### Navigation
 
@@ -840,7 +841,7 @@ states currently sit below it.
 
 One operational panel: the **notice**, a kraft tint at 14% inside a strong
 hairline, capped at 46rem, square like everything else, used for factual caveats
-such as pending tax-exempt status. On a dark ground the kraft tint is replaced by
+such as tax status or an offering that is not open yet. On a dark ground the kraft tint is replaced by
 a 7% cream wash so the panel still reads as a tinted inset rather than a box.
 Developer-facing pre-launch notes are not a visual component and have no styling
 in this system — they live in `README.md` and never ship inside a page.

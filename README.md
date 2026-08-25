@@ -1,7 +1,8 @@
 # Gathered Pages Collective — website
 
-An eleven-page static site for gatheredpages.org. No build step, no dependencies,
-no framework. Open `site/index.html` in a browser and it works.
+A thirteen-page static site for gatheredpages.org. No build step, no dependencies,
+no framework. Open `site/index.html` in a browser and it works. The pages under
+`api/` are serverless functions Vercel runs; everything else is plain HTML.
 
 ```
 site/                     ← this is the whole website. Upload this folder.
@@ -10,12 +11,15 @@ site/                     ← this is the whole website. Upload this folder.
   how-it-works.html       The convener's path, what we provide, FAQ
   the-box.html            What's in the box (interactive seed packets)
   founder.html            Meet Our Founder — Jamie's essay
+  board.html              Meet The Board
   partner.html            Partner With Us + application form
-  reading-list.html       The candidate reading list
   makers.html             Women-owned makers and bookshops
-  donate.html             Ways to give
+  donate.html             Ways to give + the Stripe giving panel
+  thank-you.html          Where Stripe returns a donor after a gift
+  newsletter.html         Newsletter signup
+  newsletter-thank-you.html  Where the signup form lands
   contact.html            Contact + form
-  404.html                Not-found page (hand-written, not generated)
+  404.html                Not-found page
   robots.txt, sitemap.xml
   assets/
     css/style.css         The whole design system, commented by section
@@ -24,9 +28,11 @@ site/                     ← this is the whole website. Upload this folder.
     js/main.js            Mobile nav, sticky masthead, packet toggles, reveals
     img/                  Logo, kit photography, generated botanical imagery
 
-tools/build_pages.py      Optional. Regenerates the ten generated HTML files so the
-                          masthead, footer and <head> stay identical across
-                          them. You can ignore it and edit the HTML directly.
+api/checkout.js           Creates a Stripe Checkout Session for a gift.
+api/stripe-webhook.js     Records completed gifts.
+api/contact.js            Emails the contact form to Jamie.
+api/subscribe.js          Adds a newsletter signup to Kit.
+
 tools/check_site.py       Run this after any edit. See "Checking your work".
 tools/giving_statements.js  Year-end giving statements. Each January:
                           node tools/giving_statements.js 2026
@@ -63,18 +69,18 @@ If you use Netlify or Cloudflare Pages: no build command, publish directory
 
 ## Editing content
 
-Two options, both fine:
+Edit the HTML directly. The files are plain and readable, and each page owns
+its own masthead and footer.
 
-1. **Edit the HTML directly.** The files are plain and readable. This is the
-   right choice for a typo or a paragraph.
-2. **Edit `tools/build_pages.py` and run `python tools/build_pages.py`.** All
-   the page copy lives in that one file. This is the right choice for anything
-   that touches the navigation, the footer, or several pages at once, because
-   it guarantees they stay identical.
+There used to be a generator, `tools/build_pages.py`, that rebuilt every page
+from one Python file. It was removed once the pages had been hand-edited past
+what it knew: it still held the pre-August copy and described the 501(c)(3) as
+pending, so running it would have reverted the site and republished a false
+tax claim. It is in the git history if it is ever wanted.
 
-If you edit the HTML by hand and then run the generator, the generator wins and
-your hand edits are lost. Pick one and stay with it. If you would rather never
-think about this again, delete `tools/` — nothing at runtime uses it.
+The cost of that choice is that shared chrome — the masthead, the footer, the
+`<head>` — has to be changed in each page. `tools/check_site.py` catches a page
+that lost a required piece of it.
 
 ## Checking your work
 
@@ -123,7 +129,7 @@ The site targets WCAG 2.1 AA. Specifically:
 - Body text is 17px minimum. Every text/background pair was measured in the
   rendered page at 4.5:1 (3:1 for large display type), and every input, select,
   textarea and button boundary at 3:1 for WCAG 1.4.11. Both audits return zero
-  failures across all eleven pages, at desktop and at 320, 360 and 390px.
+  failures across every page, at desktop and at 320, 360 and 390px.
 - Every page has exactly one `<h1>` and no skipped heading levels.
 - Every non-logo image carries `srcset` with width steps from 480px to 2400px,
   so a phone downloads phone-sized files. Cold-cache mobile home page: about
