@@ -24,6 +24,17 @@ VOID = {
     "link", "meta", "param", "source", "track", "wbr",
 }
 
+# Served by a function, so there is no file in site/ to look for.
+ROUTES = {"/newsletter"}
+
+# Chrome for one letter, rather than a page in its own right.
+TEMPLATES = {"letter-shell.html"}
+TEMPLATE_MARKERS = ("<!--BLOG_TITLE-->", "<!--BLOG_BODY-->")
+
+# Pages api/letters.js fills in. Without the marker the page still renders,
+# just silently without its letters, so the check has to be explicit.
+PAGE_MARKERS = {"newsletter.html": "<!--LETTERS-->"}
+
 problems = []
 notes = []
 
@@ -58,14 +69,18 @@ class Balance(HTMLParser):
             )
 
 
-def check_page(name, src):
-    # --- structure -------------------------------------------------------
+def check_structure(name, src):
     b = Balance()
     b.feed(src)
     for e in b.errors:
         fail(name, e)
     for tag, line in b.stack:
         fail(name, "<%s> opened at line %d is never closed" % (tag, line))
+
+
+def check_page(name, src):
+    # --- structure -------------------------------------------------------
+    check_structure(name, src)
 
     # --- required chrome -------------------------------------------------
     if '<html lang="en">' not in src:
@@ -89,6 +104,21 @@ def check_page(name, src):
         fail(name, "no link back to the home page")
 
     # --- images ----------------------------------------------------------
+    check_images(name, src)
+
+    # --- leftover template placeholders ----------------------------------
+    for m in re.finditer(r"\{[a-z_]+\}", src):
+        fail(name, "unreplaced template placeholder %s" % m.group(0))
+
+    marker = PAGE_MARKERS.get(name)
+    if marker and marker not in src:
+        fail(name, "missing %s marker — api/letters.js has nothing to fill" % marker)
+
+    # --- links, anchors, assets -----------------------------------------
+    check_links(name, src)
+
+
+def check_images(name, src):
     for m in re.finditer(r"<img\b[^>]*>", src):
         tag = m.group(0)
         line = src[: m.start()].count("\n") + 1
@@ -99,11 +129,8 @@ def check_page(name, src):
         if "width=" not in tag or "height=" not in tag:
             fail(name, "line %d: <img> without width/height (causes layout shift)" % line)
 
-    # --- leftover template placeholders ----------------------------------
-    for m in re.finditer(r"\{[a-z_]+\}", src):
-        fail(name, "unreplaced template placeholder %s" % m.group(0))
 
-    # --- links, anchors, assets -----------------------------------------
+def check_links(name, src):
     ids = set(re.findall(r'id="([^"]+)"', src))
 
     for m in re.finditer(r'(?:href|src)="([^"]+)"', src):
@@ -116,7 +143,10 @@ def check_page(name, src):
                 fail(name, "line %d: #%s does not exist on this page" % (line, target[1:]))
             continue
         path, _, frag = target.partition("#")
-        full = os.path.join(SITE, path.replace("/", os.sep))
+        if path in ROUTES:
+            continue
+        # site/ is the web root, so a leading slash resolves there too.
+        full = os.path.join(SITE, path.lstrip("/").replace("/", os.sep))
         if not os.path.exists(full):
             fail(name, "line %d: %s does not exist" % (line, target))
         elif frag and path.endswith(".html"):
@@ -127,18 +157,33 @@ def check_page(name, src):
     for m in re.finditer(r'srcset="([^"]+)"', src):
         for part in m.group(1).split(","):
             url = part.strip().split(" ")[0]
-            if url and not os.path.exists(os.path.join(SITE, url.replace("/", os.sep))):
+            if url and not os.path.exists(os.path.join(SITE, url.lstrip("/").replace("/", os.sep))):
                 fail(name, "srcset references missing file %s" % url)
 
 
+def check_template(name, src):
+    """blog-shell.html is chrome for api/blog.js, not a page: it has no <h1>,
+    no <title> text and no content until the function fills the markers."""
+    check_structure(name, src)
+    check_images(name, src)
+    check_links(name, src)
+    for marker in TEMPLATE_MARKERS:
+        if marker not in src:
+            fail(name, "missing %s marker — api/blog.js has nothing to fill" % marker)
+
+
 def main():
-    pages = sorted(f for f in os.listdir(SITE) if f.endswith(".html"))
+    html = sorted(f for f in os.listdir(SITE) if f.endswith(".html"))
+    pages = [f for f in html if f not in TEMPLATES]
     if not pages:
         print("No HTML found in site/")
         return 1
 
     for name in pages:
         check_page(name, io.open(os.path.join(SITE, name), encoding="utf-8").read())
+
+    for name in (f for f in html if f in TEMPLATES):
+        check_template(name, io.open(os.path.join(SITE, name), encoding="utf-8").read())
 
     # --- stylesheet asset references -------------------------------------
     css_path = os.path.join(SITE, "assets", "css")

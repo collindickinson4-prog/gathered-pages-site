@@ -1,5 +1,17 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "outputDirectory": "site",
-  "trailingSlash": false
+  "trailingSlash": false,
+  "functions": {
+    "api/letters.js": {
+      "includeFiles": "site/{newsletter,letter-shell}.html"
+    }
+  },
+  "redirects": [
+    { "source": "/newsletter.html", "destination": "/newsletter", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/newsletter", "destination": "/api/letters" },
+    { "source": "/newsletter/:slug", "destination": "/api/letters?slug=:slug" }
+  ]
 }

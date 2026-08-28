@@ -1740,3 +1740,14 @@ body.is-nav-open { overflow: hidden; }
   .give-amounts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .give-tabs { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* A letter from the newsletter, rendered on the blog. Kit sends body-only
+   HTML — paragraphs, links, the odd bolded line — so the archive only has to
+   give it the page's measure and rhythm and let the stylesheet do the rest. */
+.letter { max-width: var(--measure); }
+.letter > * + * { margin-top: 1.15em; }
+.letter p { font-size: var(--fs-body); margin: 0; }
+.letter a { color: var(--navy); text-decoration-color: var(--orange); }
+.letter a:hover { color: var(--orange-action); }
+.letter strong { font-weight: 700; }
+.letter img { max-width: 100%; height: auto; }

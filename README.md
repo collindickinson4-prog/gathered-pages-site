@@ -1,7 +1,8 @@
 # Gathered Pages Collective — website
 
-A thirteen-page static site for gatheredpages.org. No build step, no dependencies,
-no framework. Open `site/index.html` in a browser and it works. The pages under
+A fourteen-page static site for gatheredpages.org. No build step, no dependencies,
+no framework. One page, /newsletter, is finished by a function that reads the
+sent letters from Kit; the rest are plain HTML. Open `site/index.html` in a browser and it works. The pages under
 `api/` are serverless functions Vercel runs; everything else is plain HTML.
 
 ```
@@ -16,10 +17,16 @@ site/                     ← this is the whole website. Upload this folder.
   makers.html             Women-owned makers and bookshops
   donate.html             Ways to give + the Stripe giving panel
   thank-you.html          Where Stripe returns a donor after a gift
-  newsletter.html         Newsletter signup
+  newsletter.html         Newsletter signup, and the archive of sent letters.
+                          Served at /newsletter by api/letters.js, which fills
+                          its <!--LETTERS--> marker. Everything else on the page
+                          is ordinary HTML; edit it as you would any other page.
   newsletter-thank-you.html  Where the signup form lands
   contact.html            Contact + form
   404.html                Not-found page
+  letter-shell.html       Header, nav and footer for a single letter. Not a page:
+                          api/letters.js fills its <!--BLOG_TITLE--> and
+                          <!--BLOG_BODY--> markers.
   robots.txt, sitemap.xml
   assets/
     css/style.css         The whole design system, commented by section
@@ -32,6 +39,10 @@ api/checkout.js           Creates a Stripe Checkout Session for a gift.
 api/stripe-webhook.js     Records completed gifts.
 api/contact.js            Emails the contact form to Jamie.
 api/subscribe.js          Adds a newsletter signup to Kit.
+api/letters.js            Renders /newsletter and /newsletter/<id>-<slug> from
+                          Kit's broadcasts. A letter appears within about five
+                          minutes of Jamie ticking "Add to your Newsletter site"
+                          before sending. No deploy needed.
 
 tools/check_site.py       Run this after any edit. See "Checking your work".
 tools/giving_statements.js  Year-end giving statements. Each January:
@@ -57,6 +68,9 @@ python -m http.server 8000
 
 Opening `index.html` directly with `file://` also works, but a local server is
 closer to how it will behave when hosted.
+
+That server does not run the functions, so `/newsletter` and the forms are dead
+under it. For those, `vercel dev` from the repo root, with the values from `.env`.
 
 ## Deploying
 
